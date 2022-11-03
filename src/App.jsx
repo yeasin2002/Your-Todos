@@ -1,10 +1,21 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+
+import Loading from "./layouts/Loading";
+const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage"));
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-gray-700 font-bold text-2xl">App</h1>
-    </div>
+    <>
+      <AuthContextProvider>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+          </Routes>
+        </Suspense>
+      </AuthContextProvider>
+    </>
   );
 };
 
