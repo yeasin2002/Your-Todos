@@ -8,10 +8,10 @@ import MobileNav from "./MobileNav";
 
 const LandingNav = () => {
   return (
-    <nav className="flex justify-between items-center lg:mx-14 mx-6 my-4">
-      <div className=" flex  items-center text-2xl font-bold ">
-        <div className="bg-primary  my-2 pl-1 mr-2">
-          <img className="rounded-lg" src={check} alt="Logo " />
+    <nav className="lg:mx-14 flex items-center justify-between mx-6 my-4">
+      <div className=" flex items-center text-2xl font-bold">
+        <div className="bg-primary pl-1 my-2 mr-2">
+          <img className="rounded-lg select-none" src={check} alt="Logo " />
         </div>
         <h1>Todo </h1>
       </div>
@@ -25,5 +25,4 @@ const LandingNav = () => {
     </nav>
   );
 };
-
 export default LandingNav;

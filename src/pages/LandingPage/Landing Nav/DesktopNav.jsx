@@ -11,7 +11,7 @@ const DesktopNav = () => {
   return (
     <>
       <div className="md:flex justify-between hidden">
-        <div className="flex gap-x-4">
+        <div className="gap-x-4 flex">
           <MenuItems title={"Home"} theIcon={homeIcon} linkTo="/" />
           <MenuItems title={"About"} theIcon={aboutUs} linkTo="/about" />
           <MenuItems
@@ -20,13 +20,13 @@ const DesktopNav = () => {
             linkTo="helpAndSupport"
           />
         </div>
-        <div className="ml-4 flex items-center gap-x-2">
-          <Link to="login" className="bg-lightBlue   px-3 py-2 rounded-md  ">
+        <div className="gap-x-2 flex items-center ml-4">
+          <Link to="login" className="bg-lightBlue  px-3 py-2 rounded-md">
             Log In
           </Link>
           <Link
             to="home"
-            className="bg-primary text-gray-50   px-3 py-2 rounded-md  "
+            className="bg-primary text-gray-50  px-3 py-2 rounded-md"
           >
             start for Free
           </Link>
@@ -35,5 +35,4 @@ const DesktopNav = () => {
     </>
   );
 };
-
 export default DesktopNav;

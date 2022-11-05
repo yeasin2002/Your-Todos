@@ -24,16 +24,16 @@ const SideBar = ({ MenuHandler, MobileMenu }) => {
             }}
             className="w-[70vw] absolute top-0 right-0 h-screen bg-gray-200"
           >
-            <div className="flex justify-end  m-4 cursor-pointer">
+            <div className="flex justify-end m-4 cursor-pointer">
               <img
                 onClick={MenuHandler}
                 src={cross}
                 alt={"cross"}
-                className="w-5 h-5 mt-6 mx-4"
+                className="w-5 h-5 mx-4 mt-6 select-none"
               />
             </div>
             <div>
-              <div className="my-8 flex flex-col">
+              <div className="flex flex-col my-8">
                 <SideBarItems
                   title={"home"}
                   sideIcon={HomeIcon}

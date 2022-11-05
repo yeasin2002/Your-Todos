@@ -13,7 +13,7 @@ const MobileNav = () => {
   return (
     <div className="md:hidden overflow-x-hidden">
       <img
-        className="cursor-pointer "
+        className=" cursor-pointer"
         onClick={MenuHandler}
         src={Hamburger}
         alt={Hamburger + "logo"}
