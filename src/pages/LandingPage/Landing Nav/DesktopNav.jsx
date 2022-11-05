@@ -12,7 +12,7 @@ const DesktopNav = () => {
     <>
       <div className="md:flex justify-between hidden">
         <div className="gap-x-4 flex">
-          <MenuItems title={"Home"} theIcon={homeIcon} linkTo="/" />
+          <MenuItems title={"Home"} theIcon={homeIcon} linkTo="/" active />
           <MenuItems title={"About"} theIcon={aboutUs} linkTo="/about" />
           <MenuItems
             title={"help and support"}
@@ -21,12 +21,12 @@ const DesktopNav = () => {
           />
         </div>
         <div className="gap-x-2 flex items-center ml-4">
-          <Link to="login" className="bg-lightBlue  px-3 py-2 rounded-md">
+          <Link to="login" className="bg-lightBlue px-3 py-2 rounded-md">
             Log In
           </Link>
           <Link
             to="home"
-            className="bg-primary text-gray-50  px-3 py-2 rounded-md"
+            className="bg-primary text-gray-50 px-3 py-2 rounded-md"
           >
             start for Free
           </Link>
