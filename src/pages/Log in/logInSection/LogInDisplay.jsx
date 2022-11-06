@@ -1,13 +1,13 @@
-import React from "react";
-import Logo from "../../../layouts/Logo";
-import LogInDisplayIcon from "../../../assests/img/LogInDisplay.svg";
-import gitHubIcon from "../../../assests/icons/github.svg";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Logo from '../../../layouts/Logo';
+import LogInDisplayIcon from '../../../assests/img/LogInDisplay.svg';
+import gitHubIcon from '../../../assests/icons/github.svg';
+import { Link } from 'react-router-dom';
 
 const LogInDisplay = () => {
   return (
     <div
-      className="logInSec bg-slate-700 h-full"
+      className="logInSec bg-slate-700 md:block hidden h-full"
       style={{
         backgroundImage: `url(${LogInDisplayIcon})`,
       }}
@@ -35,7 +35,7 @@ const LogInDisplay = () => {
           </ul>
 
           <span>
-            <a target={"_blank"} href=" https://github.com/Mdkawsarislam2002">
+            <a target={'_blank'} href=" https://github.com/Mdkawsarislam2002">
               <img
                 src={gitHubIcon}
                 alt="GitHub"

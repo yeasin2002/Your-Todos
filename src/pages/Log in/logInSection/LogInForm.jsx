@@ -1,32 +1,53 @@
-import React from "react";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const LogInForm = () => {
-  let logInInput = `w-full bg-[#D9E1F2] py-2 rounded-md my-2 placeholder:text-[#3960AC]
-  placeholder:px-4 
-`;
+import InputField from '../../../components/InputField';
+
+const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
+  const ReDirect = () => {
+    setToForgotPass(true);
+  };
   return (
-    <div className="logInSec p-14 bg-gray-100">
+    <motion.div
+      initial={{
+        x: '-100',
+      }}
+      animate={{
+        x: 0,
+      }}
+      exit={{
+        x: '-100',
+      }}
+      transition={{
+        stiffness: 50,
+      }}
+      className="logInSec md:p-14 px-6 py-10 bg-gray-100"
+    >
       <div>
-        <h2>Log In </h2>
+        <h2 className="text-secondary lg:text-4xl text-2xl font-bold">
+          Log In
+        </h2>
       </div>
       <div>
         <form className="mt-10">
-          <label htmlFor="userName">
-            <p>Email or Username</p>
-          </label>
-          <input
-            type="text"
-            className={logInInput}
-            placeholder="mdkawsarislam2002@example.com"
+          <InputField
+            inputType={'text'}
+            title={'Email or Username'}
+            placeholderValue={'mdkawsarislam2002@example.com'}
+            labelFor={'userName'}
           />
 
           <br />
 
-          <label htmlFor="userName" className="mt-4">
-            <p>Password </p>
-          </label>
-          <input type="password" className={logInInput} placeholder="***" />
-          <p className="text-primary text-sm">Forgot Password </p>
+          <InputField
+            inputType={'password'}
+            title={'Password '}
+            placeholderValue={'*****'}
+            labelFor={'userPassword'}
+          />
+          <p className="text-primary text-sm cursor-pointer" onClick={ReDirect}>
+            Forgot Password{' '}
+          </p>
 
           <button type="submit" className="bg-primary w-full py-2 mt-4">
             Log In
@@ -34,7 +55,7 @@ const LogInForm = () => {
           <p className="text-sm text-center">Already logged in? Sign Up</p>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default LogInForm;

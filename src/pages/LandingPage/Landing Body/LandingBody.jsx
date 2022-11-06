@@ -1,6 +1,6 @@
-import React from "react";
-import LeftPart from "./LeftPart";
-import RightPart from "./RightPart";
+import React from 'react';
+import LeftPart from './LeftPart';
+import RightPart from './RightPart';
 
 const LandingBody = () => {
   return (
