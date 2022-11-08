@@ -1,8 +1,9 @@
 import React from 'react';
-import Logo from '../../../layouts/Logo';
-import LogInDisplayIcon from '../../../assests/img/LogInDisplay.svg';
-import gitHubIcon from '../../../assests/icons/github.svg';
 import { Link } from 'react-router-dom';
+
+import Logo from '../layouts/Logo';
+import LogInDisplayIcon from '../assests/img/LogInDisplay.svg';
+import gitHubIcon from '../assests/icons/github.svg';
 
 const LogInDisplay = () => {
   return (

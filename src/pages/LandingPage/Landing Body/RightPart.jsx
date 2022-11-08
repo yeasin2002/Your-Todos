@@ -20,7 +20,7 @@ const RightPart = () => {
             <img
               src={Mobile}
               alt="Mobile"
-              className="md:absolute md:w-48 bottom-0 left-0 w-3/4 mx-auto text-center"
+              className="md:absolute md:w-48 md:z-0 bottom-0 left-0 z-50 w-3/4 mx-auto text-center"
             />
           </div>
         </div>

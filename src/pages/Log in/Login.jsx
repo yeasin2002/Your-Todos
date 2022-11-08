@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import ChangePass from './logInSection/ChangePass';
-import LogInDisplay from './logInSection/LogInDisplay';
+import LogInDisplay from '../../components/LogInDisplay';
 import LogInForm from './logInSection/LogInForm';
 
 const Login = () => {
