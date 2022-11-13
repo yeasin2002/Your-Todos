@@ -4,6 +4,6 @@
 
 @layer components {
   .logInSec {
-    @apply border-slate-700 w-full h-full border;
+    @apply w-full h-full;
   }
 }

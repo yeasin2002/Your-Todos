@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import InputField from '../../../components/InputField';
+import useFetch from '../../../hooks/useFetch';
 
 const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
+  const [UserName, setUserName] = useState('');
+  const [UserMail, setUserMail] = useState('');
+
+  const formHandler = e => {
+    e.preventDefault();
+  };
+
   const ReDirect = () => {
     setToForgotPass(true);
   };
+
+  const LogInFetch = () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: 'mdkawsarislam2002@gmail.com' }),
+    };
+    let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
+
+    fetch(`${BaseURL}account/request-email-verify`, options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
+  };
+
+  useEffect(() => {
+    // LogInFetch();
+  }, []);
+
   return (
     <motion.div
       initial={{
@@ -29,8 +58,10 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
         </h2>
       </div>
       <div>
-        <form className="mt-10">
+        <form className="mt-10" onSubmit={formHandler}>
           <InputField
+            inputValue={UserName}
+            inputValueHandler={setUserName}
             inputType={'text'}
             title={'Email or Username'}
             placeholderValue={'mdkawsarislam2002@example.com'}
@@ -40,6 +71,8 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
           <br />
 
           <InputField
+            inputValue={UserMail}
+            inputValueHandler={setUserMail}
             inputType={'password'}
             title={'Password '}
             placeholderValue={'*****'}
@@ -49,7 +82,7 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
             Forgot Password{' '}
           </p>
 
-          <button type="submit" className="bg-primary w-full py-2 mt-4">
+          <button className="bg-primary w-full py-2 mt-4 text-white">
             Log In
           </button>
           <p className="text-sm text-center">Already logged in? Sign Up</p>

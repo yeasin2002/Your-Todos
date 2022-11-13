@@ -7,13 +7,23 @@ const InputField = ({
   placeholderValue,
   customStyle = '',
   IsRequired = false,
+
+  // state and Handler
+  inputValue = '' | 0,
+  inputValueHandler,
 }) => {
+  const inputHandler = e => {
+    inputValueHandler(e.target.value);
+  };
+
   return (
     <>
       <label htmlFor={labelFor}>
         <p>{title} </p>
       </label>
       <input
+        onChange={inputHandler}
+        value={inputValue}
         required={IsRequired}
         id={labelFor}
         type={inputType}

@@ -12,7 +12,7 @@ const Login = () => {
       <div className=" md:grid-cols-2 grid w-full h-full grid-cols-1">
         <LogInDisplay />
 
-        <div className="overflow-x-hidden">
+        <div className="h-full overflow-x-hidden">
           <AnimatePresence>
             {!ToForgotPass ? (
               <LogInForm

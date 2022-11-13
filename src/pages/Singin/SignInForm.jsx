@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Camera from '../../components/Icons/Camera';
 import InputField from '../../components/InputField';
 import { Link } from 'react-router-dom';
-const SignInForm = () => {
+import Success from '../../layouts/Alert/Success';
+
+const SignInForm = ({
+  setAbleToGetOTP,
+  Avatar,
+  FirstName,
+  LastName,
+  UserName,
+  Password,
+  ConfirmPass,
+  setAvatar,
+  setFirstName,
+  setLastName,
+  setUserName,
+  setPassword,
+  setConfirmPass,
+}) => {
+  const [IsPassMatch, setIsPassMatch] = useState(false);
+
+  const formHandler = e => {
+    e.preventDefault();
+
+    if (Password !== ConfirmPass) {
+      setIsPassMatch(true);
+      return;
+    } else {
+      setAbleToGetOTP(true);
+    }
+  };
+
   return (
     <div className="overflow-x-hidden">
       <motion.div
@@ -21,13 +50,25 @@ const SignInForm = () => {
         }}
         className="logInSec md:p-6 px-6 py-10 bg-gray-100"
       >
+        {IsPassMatch && (
+          <div className="absolute top-0 left-0">
+            <Success setIsPassMatch={setIsPassMatch}>
+              unfortunately, password and confirm password did not matched
+            </Success>
+          </div>
+        )}
         <h2 className="text-primary text-xl font-bold">Sing In</h2>
-        <form>
+        <form onSubmit={formHandler}>
           <input
             type="file"
             name="userProfilePic"
             id="userProfilePic"
             className="hidden"
+            value={Avatar}
+            onChange={e => {
+              e.preventDefault();
+              setAvatar(e.target?.value);
+            }}
           />
           <div className="flex items-center justify-center">
             <label htmlFor="userProfilePic">
@@ -45,6 +86,8 @@ const SignInForm = () => {
                 placeholderValue={'john '}
                 inputType="text"
                 customStyle="placeholder:px-2  my-1 "
+                inputValue={FirstName}
+                inputValueHandler={setFirstName}
               />
             </div>
             <div>
@@ -54,6 +97,8 @@ const SignInForm = () => {
                 placeholderValue={'john '}
                 inputType="text"
                 customStyle="placeholder:px-2  my-1 "
+                inputValue={LastName}
+                inputValueHandler={setLastName}
               />
             </div>
           </div>
@@ -63,6 +108,8 @@ const SignInForm = () => {
             placeholderValue={'john  Deo'}
             inputType="text"
             customStyle="placeholder:px-2  my-1 "
+            inputValue={UserName}
+            inputValueHandler={setUserName}
           />
           <InputField
             title={'Password'}
@@ -70,6 +117,8 @@ const SignInForm = () => {
             placeholderValue={'****'}
             inputType="password"
             customStyle="placeholder:px-2  my-1 "
+            inputValue={Password}
+            inputValueHandler={setPassword}
           />
           <InputField
             title={'Confirm Password'}
@@ -77,11 +126,15 @@ const SignInForm = () => {
             placeholderValue={'****'}
             inputType="password"
             customStyle="placeholder:px-2  my-1 "
+            inputValue={ConfirmPass}
+            inputValueHandler={setConfirmPass}
+            IsRequired={true}
           />
 
           <input
+            onClick={formHandler}
             type="submit"
-            className="bg-primary w-full px-4 py-2 my-2 rounded-lg"
+            className="bg-primary w-full px-4 py-2 my-2 text-white rounded-lg cursor-pointer"
             value="submit"
           />
         </form>

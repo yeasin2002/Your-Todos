@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -6,6 +6,9 @@ import LeftArrow from '../../../components/Icons/LeftArrow';
 import InputField from '../../../components/InputField';
 
 const ChangePass = ({ ToForgotPass, setToForgotPass }) => {
+  const [ChangePass, setChangePass] = useState('');
+  const [ConfirmPass, setConfirmPass] = useState('');
+
   const ReDirect = () => {
     setToForgotPass(false);
   };
@@ -23,6 +26,7 @@ const ChangePass = ({ ToForgotPass, setToForgotPass }) => {
       transition={{
         stiffness: 50,
       }}
+      className="h-full"
     >
       <div className="logInSec md:p-14 px-6 py-10 bg-gray-100">
         <div className="flex justify-between">
@@ -43,6 +47,8 @@ const ChangePass = ({ ToForgotPass, setToForgotPass }) => {
               title={'Enter New Password '}
               placeholderValue={'****'}
               labelFor={'NewPass'}
+              inputValue={ChangePass}
+              inputValueHandler={setChangePass}
             />
             <br />
 
@@ -51,6 +57,8 @@ const ChangePass = ({ ToForgotPass, setToForgotPass }) => {
               title={'Confirm New Password '}
               placeholderValue={'*****'}
               labelFor={'userPassword'}
+              inputValue={ConfirmPass}
+              inputValueHandler={setConfirmPass}
             />
 
             <button type="submit" className="bg-primary w-full py-2 mt-4">
