@@ -5,12 +5,13 @@ import InputField from '../../../components/InputField';
 import useFetch from '../../../hooks/useFetch';
 
 const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
-  const [UserName, setUserName] = useState('');
-  const [UserMail, setUserMail] = useState('');
+  const [UserNameOrMail, setUserNameOrMail] = useState('');
+  const [UserPassword, setUserPassword] = useState('');
 
-  const formHandler = e => {
-    e.preventDefault();
-  };
+  // log in event state
+  const [IsLoading, setIsLoading] = useState('Log In ');
+  const [IsError, setIsError] = useState(false);
+  const [ErrorLog, setErrorLog] = useState('');
 
   const ReDirect = () => {
     setToForgotPass(true);
@@ -22,20 +23,32 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: 'mdkawsarislam2002@gmail.com' }),
+      body: JSON.stringify({
+        login: UserNameOrMail,
+        password: UserPassword,
+      }),
     };
     let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
 
-    fetch(`${BaseURL}account/request-email-verify`, options)
+    fetch(`${BaseURL}/account/login`, options)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        if (data.status == 'fail') {
+          setIsError(true);
+          setErrorLog(data.message);
+          setIsLoading('Log In ');
+        } else {
+          setIsLoading('Logged in   ');
+        }
+      })
       .catch(err => console.error(err));
   };
 
-  useEffect(() => {
-    // LogInFetch();
-  }, []);
-
+  const LogInHandler = e => {
+    setIsLoading('Loading............!');
+    setErrorLog('');
+    LogInFetch();
+  };
   return (
     <motion.div
       initial={{
@@ -58,10 +71,10 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
         </h2>
       </div>
       <div>
-        <form className="mt-10" onSubmit={formHandler}>
+        <form className="mt-10" onSubmit={e => e.preventDefault()}>
           <InputField
-            inputValue={UserName}
-            inputValueHandler={setUserName}
+            inputValue={UserNameOrMail}
+            inputValueHandler={setUserNameOrMail}
             inputType={'text'}
             title={'Email or Username'}
             placeholderValue={'mdkawsarislam2002@example.com'}
@@ -71,8 +84,8 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
           <br />
 
           <InputField
-            inputValue={UserMail}
-            inputValueHandler={setUserMail}
+            inputValue={UserPassword}
+            inputValueHandler={setUserPassword}
             inputType={'password'}
             title={'Password '}
             placeholderValue={'*****'}
@@ -82,11 +95,17 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
             Forgot Password{' '}
           </p>
 
-          <button className="bg-primary w-full py-2 mt-4 text-white">
-            Log In
+          <button
+            onClick={LogInHandler}
+            className="bg-primary w-full py-2 mt-4 text-white rounded-md"
+          >
+            {IsLoading}
           </button>
           <p className="text-sm text-center">Already logged in? Sign Up</p>
         </form>
+        <div className=" mx-2 my-6 text-xl font-bold text-center text-red-700">
+          {setIsError && ErrorLog}
+        </div>
       </div>
     </motion.div>
   );

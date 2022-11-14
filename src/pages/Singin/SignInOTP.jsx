@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import LeftArrow from '../../components/Icons/LeftArrow';
 import InputField from '../../components/InputField';
+import FinalSignIn from './FinalSignIn';
 import GetOTP_btn from './GetOTP_btn';
 
 const SignInOTP = ({
@@ -15,12 +16,12 @@ const SignInOTP = ({
   ConfirmPass,
 
   // set Stats
-  setAvatar,
-  setFirstName,
-  setLastName,
-  setUserName,
-  setPassword,
-  setConfirmPass,
+  // setAvatar,
+  // setFirstName,
+  // setLastName,
+  // setUserName,
+  // setPassword,
+  // setConfirmPass,
 }) => {
   const [SigInMail, setSigInMail] = useState('');
   const [OTP, setOTP] = useState(0);
@@ -28,36 +29,7 @@ const SignInOTP = ({
 
   const FormHandler = e => {
     e.preventDefault();
-    console.log('enter');
   };
-
-  //  fetch data
-  const SentData = () => {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authentication: 'Bearer<jwt-token>',
-      },
-      body: JSON.stringify({
-        email: SigInMail,
-        username: UserName,
-        name: FirstName + ' ' + LastName,
-        avatar: Avatar,
-        password: Password,
-        code: '',
-      }),
-    };
-    let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
-
-    fetch(`${BaseURL}account/signup`, options)
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err));
-  };
-  useEffect(() => {
-    // SentData();
-  }, []);
 
   return (
     <div className="logInSec md:p-6 px-6 py-10 bg-gray-100">
@@ -88,11 +60,13 @@ const SignInOTP = ({
             title={'Code'}
             labelFor="otpCode"
             placeholderValue={''}
-            inputType="number"
+            inputType="text"
             inputValue={OTP}
             inputValueHandler={setOTP}
           />
         )}
+
+        {/* button for event  */}
         {!IsGetOTP ? (
           <GetOTP_btn
             IsGetOTP={IsGetOTP}
@@ -101,11 +75,15 @@ const SignInOTP = ({
             setSigInMail={setSigInMail}
           />
         ) : (
-          <input
-            onClick={FormHandler}
-            type="button"
-            className="bg-primary w-full py-2 my-2 font-bold text-white rounded-lg cursor-pointer"
-            value={'Enter '}
+          <FinalSignIn
+            Avatar={Avatar}
+            FirstName={FirstName}
+            LastName={LastName}
+            UserName={UserName}
+            Password={Password}
+            ConfirmPass={ConfirmPass}
+            SigInMail={SigInMail}
+            OTP={OTP}
           />
         )}
         {IsGetOTP && (
