@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BaseUrl, EndPoints } from '../../api/api';
 
 const GetOTP_btn = ({ IsGetOTP, setIsGetOTP, SigInMail, setSigInMail }) => {
   const [IsLoading, setIsLoading] = useState(false);
@@ -14,14 +15,14 @@ const GetOTP_btn = ({ IsGetOTP, setIsGetOTP, SigInMail, setSigInMail }) => {
       },
       body: JSON.stringify({ email: SigInMail }),
     };
-    let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
 
-    fetch(`${BaseURL}account/request-email-verify`, options)
+    fetch(`${BaseUrl}${EndPoints.getOTP}`, options)
       .then(response => response.json())
       .then(data => {
         if (data.status === 'success') {
           setIsGetOTP(true);
           setIsLoading(false);
+
           console.log(data);
         } else {
           setErrorLog(data.message);
@@ -29,13 +30,14 @@ const GetOTP_btn = ({ IsGetOTP, setIsGetOTP, SigInMail, setSigInMail }) => {
           setIsLoading(false);
         }
       })
-      .catch(err => {
+      .catch(() => {
         setIsError(true);
         setIsLoading(false);
       });
   };
 
   const OTPHandler = e => {
+    console.log('clicked : OTP_btn');
     setIsError(false);
     setErrorLog('');
     if (!SigInMail) return;

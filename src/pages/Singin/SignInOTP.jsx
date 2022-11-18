@@ -7,24 +7,15 @@ import GetOTP_btn from './GetOTP_btn';
 
 const SignInOTP = ({
   setAbleToGetOTP,
-
   Avatar,
   FirstName,
   LastName,
   UserName,
   Password,
   ConfirmPass,
-
-  // set Stats
-  // setAvatar,
-  // setFirstName,
-  // setLastName,
-  // setUserName,
-  // setPassword,
-  // setConfirmPass,
 }) => {
   const [SigInMail, setSigInMail] = useState('');
-  const [OTP, setOTP] = useState(0);
+  const [OTP, setOTP] = useState('');
   const [IsGetOTP, setIsGetOTP] = useState(false);
 
   const FormHandler = e => {

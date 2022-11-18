@@ -6,4 +6,7 @@
   .logInSec {
     @apply w-full h-full;
   }
+  .homeNavItems {
+    @apply gap-x-2 flex flex-col items-center;
+  }
 }

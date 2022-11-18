@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { BaseUrl, EndPoints } from '../../api/api';
 
 const FinalSignIn = ({
   Avatar,
@@ -9,8 +10,10 @@ const FinalSignIn = ({
   SigInMail,
   OTP,
 }) => {
+  // const [JWT_Token, setJWT_Token] = useState('');
   const FormHandler = e => {
     e.preventDefault();
+    console.log(BaseUrl + EndPoints.signup);
     SentData();
   };
 
@@ -31,16 +34,19 @@ const FinalSignIn = ({
         code: OTP,
       }),
     };
-    let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
 
-    fetch(`${BaseURL}account/signup`, options)
+    fetch(BaseUrl + EndPoints.signup, options)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(responseData => {
+        console.log(responseData);
+        console.log(responseData.data.token);
+        localStorage.setItem('userToken', responseData.data.token);
+      })
       .catch(err => console.error(err));
   };
-  useEffect(() => {
-    // SentData();
-  }, []);
+  // useEffect(() => {
+  //  SentData();
+  // }, []);
 
   return (
     <input

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import InputField from '../../../components/InputField';
-import useFetch from '../../../hooks/useFetch';
+// import useFetch from '../../../hooks/useFetch';
+import { BaseUrl, EndPoints } from '../../../api/api';
 
-const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
+const LogInForm = ({ setToForgotPass }) => {
   const [UserNameOrMail, setUserNameOrMail] = useState('');
   const [UserPassword, setUserPassword] = useState('');
 
@@ -12,6 +14,8 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
   const [IsLoading, setIsLoading] = useState('Log In ');
   const [IsError, setIsError] = useState(false);
   const [ErrorLog, setErrorLog] = useState('');
+
+  const navigate = useNavigate();
 
   const ReDirect = () => {
     setToForgotPass(true);
@@ -28,27 +32,31 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
         password: UserPassword,
       }),
     };
-    let BaseURL = ` https://young-coders-todo-app.herokuapp.com/v1/`;
 
-    fetch(`${BaseURL}/account/login`, options)
+    fetch(BaseUrl + EndPoints.login, options)
       .then(response => response.json())
-      .then(data => {
-        if (data.status == 'fail') {
+      .then(ResponseData => {
+        if (ResponseData.status == 'fail') {
           setIsError(true);
-          setErrorLog(data.message);
+          setErrorLog(ResponseData.message);
           setIsLoading('Log In ');
         } else {
-          setIsLoading('Logged in   ');
+          setIsLoading('Logged in');
+          localStorage.setItem('userToken', ResponseData.data.token);
+          return navigate('/home');
         }
       })
       .catch(err => console.error(err));
   };
 
-  const LogInHandler = e => {
-    setIsLoading('Loading............!');
+  const LogInHandler = () => {
     setErrorLog('');
+
+    if (!UserNameOrMail | !UserPassword) return;
+    setIsLoading('Loading............!');
     LogInFetch();
   };
+
   return (
     <motion.div
       initial={{
@@ -79,6 +87,7 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
             title={'Email or Username'}
             placeholderValue={'mdkawsarislam2002@example.com'}
             labelFor={'userName'}
+            IsRequired={true}
           />
 
           <br />
@@ -90,6 +99,7 @@ const LogInForm = ({ ToForgotPass, setToForgotPass }) => {
             title={'Password '}
             placeholderValue={'*****'}
             labelFor={'userPassword'}
+            IsRequired={true}
           />
           <p className="text-primary text-sm cursor-pointer" onClick={ReDirect}>
             Forgot Password{' '}
