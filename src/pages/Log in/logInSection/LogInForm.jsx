@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import InputField from '../../../components/InputField';
@@ -111,7 +111,15 @@ const LogInForm = ({ setToForgotPass }) => {
           >
             {IsLoading}
           </button>
-          <p className="text-sm text-center">Already logged in? Sign Up</p>
+          <p className="md:my-2 lg:my-6 text-sm text-center">
+            Already logged in?
+            <Link
+              to={'/sign_in'}
+              className="text-md mx-2 font-bold text-blue-600"
+            >
+              Sign Up
+            </Link>
+          </p>
         </form>
         <div className=" mx-2 my-6 text-xl font-bold text-center text-red-700">
           {setIsError && ErrorLog}

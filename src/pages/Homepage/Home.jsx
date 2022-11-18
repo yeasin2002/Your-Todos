@@ -1,10 +1,17 @@
-import React, { useEffect } from 'react';
-import HomeImg from '../../assests/icons/home.svg';
+import React, { useEffect, useState } from 'react';
+import HomeDesktopNav from './Home Nav/HomeDesktopNav';
+import { AnimatePresence, motion } from 'framer-motion';
+
+//  components
+import HomeMobileNav from './Home Nav/HomeMobileNav';
+import TodoIndex from './Todos/todoIndex';
+import Leave from '../../components/Leave';
 
 const Home = () => {
+  const [IsSidebarShow, setIsSidebarShow] = useState(true);
+
   useEffect(() => {
     let userData = localStorage.getItem('userToken');
-
     // FetchUserData(userData);
   }, []);
 
@@ -24,35 +31,20 @@ const Home = () => {
 
   return (
     <div className="w-screen h-screen">
-      <nav className=" bg-[#D9E1F2] fixed bottom-0 left-0 flex w-full justify-between py-6">
-        <div className="homeNavItems">
-          <span>
-            <img src={HomeImg} alt="home" />
-          </span>
-          <p>Home</p>
-        </div>
+      <div className=" flex w-full h-full">
+        <AnimatePresence>
+          {IsSidebarShow ? (
+            <HomeDesktopNav setIsSidebarShow={setIsSidebarShow} />
+          ) : (
+            <Leave setIsSidebarShow={setIsSidebarShow} />
+          )}
+        </AnimatePresence>
+        <TodoIndex />
+      </div>
 
-        <div className="homeNavItems">
-          <span>
-            <img src={HomeImg} alt="home" />
-          </span>
-          <p>Home</p>
-        </div>
-
-        <div className="homeNavItems">
-          <span>
-            <img src={HomeImg} alt="home" />
-          </span>
-          <p>Home</p>
-        </div>
-
-        <div className="homeNavItems">
-          <span>
-            <img src={HomeImg} alt="home" />
-          </span>
-          <p>Home</p>
-        </div>
-      </nav>
+      {/* nav bar start  */}
+      <HomeMobileNav />
+      {/* nav bar end  */}
     </div>
   );
 };
