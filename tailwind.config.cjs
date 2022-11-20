@@ -8,6 +8,7 @@ module.exports = {
         secondary: '#132039',
         lightBlue: '#D9E1F2',
         ashed: '#D9E1F2',
+        'sky-250': '#C6D3EC',
       },
     },
   },

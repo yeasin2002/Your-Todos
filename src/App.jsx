@@ -2,16 +2,17 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 
-import Loading from './layouts/Loading';
-import Login from './pages/Log in/Login';
-import SignIn from './pages/Singin/SignIn';
-
+// outlets
 import PrivetOutlet from './PrivetRoute/PrivetOutlet';
 import PublicOutlet from './PrivetRoute/PublicOutlet';
 
+//  pages components
 const Home = lazy(() => import('./pages/Homepage/Home'));
 const LandingPage = lazy(() => import('./pages/LandingPage/LandingPage'));
 const AboutUs = lazy(() => import('./pages/aboutPage/About'));
+const Loading = lazy(() => import('./layouts/Loading'));
+const Login = lazy(() => import('./pages/Log in/Login'));
+const SignIn = lazy(() => import('./pages/Singin/SignIn'));
 const HelpAndSupport = lazy(() =>
   import('./pages/helpAndSupportPage/HelpAndSupport')
 );

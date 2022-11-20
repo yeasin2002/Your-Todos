@@ -21,4 +21,10 @@
   .desktopMenuPara {
     @apply text-slate-800 font-bold;
   }
+  .linkItems {
+    @apply text-slate-700 hover:text-slate-900 font-bold transition-all;
+  }
+  .contributorProfilePic {
+    @apply dark:border-gray-800  w-10 h-10 border-2 border-white rounded-full;
+  }
 }

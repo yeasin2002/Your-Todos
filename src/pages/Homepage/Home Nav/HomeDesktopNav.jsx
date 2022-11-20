@@ -20,20 +20,20 @@ let profile = `https://th.bing.com/th/id/OIP.U0jepfI2xnjVrBZIfQ-DaQHaFe?pid=ImgD
 
 const goLogOut = () => {
   // clear localStorage
-  console.log("log out ")
+  console.log('log out ');
 };
 
 const HomeDesktopNav = ({ setIsSidebarShow }) => {
   return (
     <motion.nav
       initial={{
-        opacity: 0,
+        x: '-100',
       }}
       animate={{
-        opacity: 1,
+        x: 0,
       }}
       exit={{
-        opacity: 0,
+        x: '-100',
       }}
       className=" border  w-[30vw]  h-full  bg-gray-200 hidden md:block pb-8"
     >

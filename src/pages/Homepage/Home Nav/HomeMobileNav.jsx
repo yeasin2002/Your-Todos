@@ -37,16 +37,13 @@ const HomeMobileNav = () => {
         </div>
       </div>
 
-      {/* <Link to="notification" className="homeNavItems">
-        <span>
-          <img className="homeNavImg" src={NotificationIcon} alt="home" />
-        </span>
-        <p>Notification</p>
-      </Link> */}
-
       <Link to="notification" className="homeNavItems">
         <span>
-          <img className="homeNavImg" src={User} alt="Notification" />
+          <img
+            className="homeNavImg"
+            src={NotificationIcon}
+            alt="Notification"
+          />
         </span>
         <p>Notification</p>
       </Link>
