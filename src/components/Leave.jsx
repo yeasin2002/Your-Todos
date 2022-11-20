@@ -14,7 +14,7 @@ const Leave = ({ setIsSidebarShow }) => {
       exit={{
         opacity: 0,
       }}
-      className="bottom-4 absolute left-0"
+      className="bottom-4 left-2 absolute cursor-pointer"
     >
       <img
         src={LeaveIcon}

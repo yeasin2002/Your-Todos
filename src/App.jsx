@@ -1,17 +1,19 @@
-import React, { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import { AuthContextProvider } from "./context/AuthContext";
+import React, { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { AuthContextProvider } from './context/AuthContext';
 
-import Loading from "./layouts/Loading";
-import Login from "./pages/Log in/Login";
-import SignIn from "./pages/Singin/SignIn";
-import PrivetOutlet from "./PrivetRoute/PrivetOutlet";
+import Loading from './layouts/Loading';
+import Login from './pages/Log in/Login';
+import SignIn from './pages/Singin/SignIn';
 
-const Home = lazy(() => import("./pages/Homepage/Home"));
-const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage"));
-const AboutUs = lazy(() => import("./pages/aboutPage/About"));
+import PrivetOutlet from './PrivetRoute/PrivetOutlet';
+import PublicOutlet from './PrivetRoute/PublicOutlet';
+
+const Home = lazy(() => import('./pages/Homepage/Home'));
+const LandingPage = lazy(() => import('./pages/LandingPage/LandingPage'));
+const AboutUs = lazy(() => import('./pages/aboutPage/About'));
 const HelpAndSupport = lazy(() =>
-  import("./pages/helpAndSupportPage/HelpAndSupport")
+  import('./pages/helpAndSupportPage/HelpAndSupport')
 );
 
 const App = () => {
@@ -20,15 +22,18 @@ const App = () => {
       <AuthContextProvider>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/sign_in" element={<SignIn />} />
+            {/* public outlet  */}
+            <Route path="/" element={<PublicOutlet />}>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/sign_in" element={<SignIn />} />
+            </Route>
 
             {/* Protected Route */}
             <Route path="/*" element={<PrivetOutlet />}>
               <Route path="about" element={<AboutUs />} />
               <Route path="helpAndSupport" element={<HelpAndSupport />} />
-              <Route path="home" element={<Home />} />
+              <Route path="home/*" element={<Home />} />
             </Route>
           </Routes>
         </Suspense>

@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import HomeDesktopNav from './Home Nav/HomeDesktopNav';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { Suspense, useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 //  components
-import HomeMobileNav from './Home Nav/HomeMobileNav';
 import TodoIndex from './Todos/todoIndex';
+
+import HomeDesktopNav from './Home Nav/HomeDesktopNav';
+import HomeMobileNav from './Home Nav/HomeMobileNav';
 import Leave from '../../components/Leave';
+import Loading from '../../layouts/Loading';
+
+import TodoHome from './Todos/Pages/TodoHome';
+import Profile from './Todos/Pages/Profile';
+import Notifications from './Todos/Pages/Notifications';
+import Search from './Todos/Pages/Search';
 
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(true);
@@ -31,7 +39,7 @@ const Home = () => {
 
   return (
     <div className="w-screen h-screen">
-      <div className=" flex w-full h-full">
+      <div className=" flex w-full h-full transition-all">
         <AnimatePresence>
           {IsSidebarShow ? (
             <HomeDesktopNav setIsSidebarShow={setIsSidebarShow} />
@@ -39,12 +47,21 @@ const Home = () => {
             <Leave setIsSidebarShow={setIsSidebarShow} />
           )}
         </AnimatePresence>
-        <TodoIndex />
+
+        {/* <TodoIndex /> */}
+
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="todoHome" index element={<TodoHome />} />
+            <Route path="search" element={<Search />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="notification" element={<Notifications />} />
+          </Routes>
+        </Suspense>
       </div>
 
-      {/* nav bar start  */}
+      {/* nav bar from mobile  */}
       <HomeMobileNav />
-      {/* nav bar end  */}
     </div>
   );
 };

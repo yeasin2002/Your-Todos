@@ -18,6 +18,11 @@ import Leave from '../../../assests/icons/Leave.svg';
 
 let profile = `https://th.bing.com/th/id/OIP.U0jepfI2xnjVrBZIfQ-DaQHaFe?pid=ImgDet&rs=1`;
 
+const goLogOut = () => {
+  // clear localStorage
+  console.log("log out ")
+};
+
 const HomeDesktopNav = ({ setIsSidebarShow }) => {
   return (
     <motion.nav
@@ -30,7 +35,7 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
       exit={{
         opacity: 0,
       }}
-      className=" border  w-[30vw]  h-full  bg-gray-200 hidden md:block"
+      className=" border  w-[30vw]  h-full  bg-gray-200 hidden md:block pb-8"
     >
       <div className=" flex flex-col items-center justify-center my-2">
         <img
@@ -58,21 +63,21 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
 
       {/* menu  */}
       <div className="mx-4 my-8">
-        <div className="desktopMenuDiv">
+        <Link to="todoHome" className="desktopMenuDiv">
           <span>
             <img className="desktopMenuIcon" src={HomeImg} alt="Home " />
           </span>
           <p className="desktopMenuPara">Home</p>
-        </div>
+        </Link>
 
-        <div className="desktopMenuDiv">
+        <Link to="search" className="desktopMenuDiv">
           <span>
             <img className="desktopMenuIcon" src={SearchIcon} alt="Home " />
           </span>
           <p className="desktopMenuPara">Search</p>
-        </div>
+        </Link>
 
-        <div className="desktopMenuDiv">
+        <Link to="notification" className="desktopMenuDiv">
           <span>
             <img
               className="desktopMenuIcon"
@@ -81,16 +86,17 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
             />
           </span>
           <p className="desktopMenuPara">Notification</p>
-        </div>
+        </Link>
 
-        <div className="desktopMenuDiv">
+        <Link to="profile" className="desktopMenuDiv">
           <span>
             <img className="desktopMenuIcon" src={User} alt="Home " />
           </span>
           <p className="desktopMenuPara">Profile </p>
-        </div>
+        </Link>
 
-        <div className="desktopMenuDiv mt-4">
+        {/* logout  */}
+        <div className="desktopMenuDiv mt-4" onClick={goLogOut}>
           <span>
             <img className="desktopMenuIcon" src={LogOut} alt="Home " />
           </span>
@@ -100,7 +106,7 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
 
       {/*  bottom area */}
 
-      <div className="flex items-center justify-between mx-4 bg-gray-200">
+      <div className=" flex items-center justify-around w-full pb-8 bg-gray-200">
         <div className=" gap-x-2 flex">
           <Link to="/about">
             <img className="w-6" src={About} alt="About" />
@@ -112,7 +118,7 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
             <img className="w-6" src={gitHubIcon} alt="github id " />
           </a>
         </div>
-        <div className="mr-4">
+        <div className="mr-4 cursor-pointer">
           <img
             src={Leave}
             alt="leave sidebar "

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
 //  assets / Icons
 import PlusIcon from '../../../assests/icons/plus-icon.svg';
@@ -8,21 +9,25 @@ import NotificationIcon from '../../../assests/icons/bell.svg';
 import User from '../../../assests/icons/user.svg';
 
 const HomeMobileNav = () => {
+  useEffect(() => {
+    <Navigate to={'/notification'} />;
+  }, []);
+
   return (
     <nav className=" bg-ashed md:hidden fixed bottom-0 left-0 flex justify-around w-full pt-4">
-      <div className="homeNavItems">
+      <Link to="todoHome" className="homeNavItems">
         <span>
           <img className="homeNavImg" src={HomeImg} alt="home" />
         </span>
         <p>Home</p>
-      </div>
+      </Link>
 
-      <div className="homeNavItems">
+      <Link to="search" className="homeNavItems">
         <span>
           <img className="homeNavImg" src={SearchIcon} alt="home" />
         </span>
         <p>Search</p>
-      </div>
+      </Link>
 
       <div>
         <div className="homeNavItems bg-ashed bottom-7 relative left-0 p-2 rounded-full">
@@ -32,19 +37,26 @@ const HomeMobileNav = () => {
         </div>
       </div>
 
-      <div className="homeNavItems">
+      {/* <Link to="notification" className="homeNavItems">
         <span>
           <img className="homeNavImg" src={NotificationIcon} alt="home" />
         </span>
         <p>Notification</p>
-      </div>
+      </Link> */}
 
-      <div className="homeNavItems">
+      <Link to="notification" className="homeNavItems">
+        <span>
+          <img className="homeNavImg" src={User} alt="Notification" />
+        </span>
+        <p>Notification</p>
+      </Link>
+
+      <Link to="profile" className="homeNavItems">
         <span>
           <img className="homeNavImg" src={User} alt="home" />
         </span>
         <p>Profile</p>
-      </div>
+      </Link>
     </nav>
   );
 };
