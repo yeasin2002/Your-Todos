@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -15,6 +15,7 @@ import gitHubIcon from '../../../assests/icons/github.svg';
 import About from '../../../assests/icons/about-us.svg';
 import Help from '../../../assests/icons/help-&-support.svg';
 import Leave from '../../../assests/icons/Leave.svg';
+import { UserContext } from '../../../context/UserContext';
 
 let profile = `https://th.bing.com/th/id/OIP.U0jepfI2xnjVrBZIfQ-DaQHaFe?pid=ImgDet&rs=1`;
 
@@ -24,6 +25,12 @@ const goLogOut = () => {
 };
 
 const HomeDesktopNav = ({ setIsSidebarShow }) => {
+  const UserAllData = useContext(UserContext);
+  if (!UserAllData) return;
+  else {
+    // const { username, email, _id } = UserAllData?.user;
+  }
+
   return (
     <motion.nav
       initial={{
@@ -44,10 +51,11 @@ const HomeDesktopNav = ({ setIsSidebarShow }) => {
           alt=" avatar"
         />
         <h4 className="text-primary text-base">Good Afternoon ,</h4>
-        <h2 className="text-primary text-2xl font-bold">Name </h2>
+        <h2 className="text-primary text-2xl font-bold"> username </h2>
 
         <div className=" gap-x-2 flex items-center px-2 py-1 my-4 bg-white rounded-lg">
           copy handler
+          {/* _id */}
           <span>
             <img src={LinkIcon} alt="copy userName" />
           </span>

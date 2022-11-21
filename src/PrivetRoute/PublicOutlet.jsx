@@ -3,6 +3,7 @@ import AuthContext from '../context/AuthContext';
 
 const PublicOutlet = () => {
   let theAuth = true;
+  // localStorage.getItem('userToken');
 
   if (!theAuth) {
     return <Outlet />;

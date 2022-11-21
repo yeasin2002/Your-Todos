@@ -24,6 +24,7 @@ const App = () => {
         <Suspense fallback={<Loading />}>
           <Routes>
             {/* public outlet  */}
+
             <Route path="/" element={<PublicOutlet />}>
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />

@@ -14,7 +14,7 @@ const HomeMobileNav = () => {
   }, []);
 
   return (
-    <nav className=" bg-ashed md:hidden fixed bottom-0 left-0 flex justify-around w-full pt-4">
+    <nav className=" bg-ashed md:hidden flex justify-around w-full pt-4">
       <Link to="todoHome" className="homeNavItems">
         <span>
           <img className="homeNavImg" src={HomeImg} alt="home" />
