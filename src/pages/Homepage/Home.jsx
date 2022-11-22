@@ -22,15 +22,7 @@ const Home = () => {
 
       <div className=" flex justify-between w-full h-full">
         <DeskTopNav />
-        {/* <TodoHomeRoute /> */}
-        {/* <Routes>
-          <Route index element={TodoIndex} />
-          <Route path="notification" element={Notification} />
-          <Route path="search" element={Search} />
-          <Route path="profile" element={Profile} />
-        </Routes> */}
-        Route
-        <Outlet />
+        <TodoHomeRoute />
       </div>
 
       <div>

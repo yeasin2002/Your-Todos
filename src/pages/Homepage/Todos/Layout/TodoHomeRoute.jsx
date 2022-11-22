@@ -10,10 +10,10 @@ import Profile from '../pages/profile/Profile';
 const TodoHomeRoute = () => {
   return (
     <Routes>
-      <Route index path="todoHome" element={TodoIndex} />
-      <Route path="notification" element={Notification} />
-      <Route path="search" element={Search} />
-      <Route path="profile" element={Profile} />
+      <Route index element={<TodoIndex />} />
+      <Route path="notification" element={<Notification />} />
+      <Route path="search" element={<Search />} />
+      <Route path="profile" element={<Profile />} />
     </Routes>
   );
 };
