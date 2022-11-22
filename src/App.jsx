@@ -42,12 +42,7 @@ const App = () => {
               <Route path="about" element={<AboutUs />} />
               <Route path="helpAndSupport" element={<HelpAndSupport />} />
 
-              <Route path="home" element={<Home />}>
-                <Route index element={TodoIndex} />
-                <Route path="notification" element={Notification} />
-                <Route path="search" element={Search} />
-                <Route path="profile" element={Profile} />
-              </Route>
+              <Route path="home/*" element={<Home />} />
             </Route>
           </Routes>
         </Suspense>

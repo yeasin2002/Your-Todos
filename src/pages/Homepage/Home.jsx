@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, Outlet } from 'react-router-dom';
 
 //  Routes
@@ -14,14 +14,20 @@ import Notification from './Todos/pages/notification/Notification';
 import Profile from './Todos/pages/profile/Profile';
 import Search from './Todos/pages/search/Search';
 import TodoIndex from './Todos/pages/todo home/TodoIndex';
+import DesktopSidebar from './Todos/Layout/DesktopSidebar';
 
 const Home = () => {
+  const [IsSidebarShow, setIsSidebarShow] = useState(true);
   return (
-    <div className="flex flex-col justify-between w-screen h-screen">
+    <div className=" justify-between w-screen h-screen">
       <MobileTopArea />
 
       <div className=" flex justify-between w-full h-full">
-        <DeskTopNav />
+        <DesktopSidebar
+          setIsSidebarShow={setIsSidebarShow}
+          IsSidebarShow={IsSidebarShow}
+        />
+        {/* <DeskTopNav /> */}
         <TodoHomeRoute />
       </div>
 

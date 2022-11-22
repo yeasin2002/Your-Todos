@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TodoIndex = () => {
-  return <div>TodoIndex</div>;
+  return <div className=" w-full">TodoIndex</div>;
 };
 
 export default TodoIndex;
