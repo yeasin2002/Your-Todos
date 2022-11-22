@@ -11,12 +11,12 @@ import ProfileIcon from '../../../../assests/icons/user.svg';
 const MobileNav = () => {
   return (
     <nav className="bg-sky-250 md:hidden flex justify-around py-1">
-      <Link to="/" className="flex flex-col items-center gap-2">
+      <Link to="todoHome" className="flex flex-col items-center gap-2">
         <img src={homeIcon} alt="home" className="w-6 h-6" />
         <span>Home</span>
       </Link>
 
-      <Link to="/" className="flex flex-col items-center gap-2">
+      <Link to="notification" className="flex flex-col items-center gap-2">
         <img src={notificationIcon} alt="home" className="w-6 h-6" />
         <span>notifications</span>
       </Link>
@@ -28,12 +28,12 @@ const MobileNav = () => {
         </span>
       </div>
 
-      <Link to="/" className="flex flex-col items-center gap-2">
+      <Link to="search" className="flex flex-col items-center gap-2">
         <img src={searchIcon} alt="home" className="w-6 h-6" />
         <span>Search</span>
       </Link>
 
-      <Link to="/" className="flex flex-col items-center gap-2">
+      <Link to="profile" className="flex flex-col items-center gap-2">
         <img src={ProfileIcon} alt="home" className="w-6 h-6" />
         <span>Profile</span>
       </Link>

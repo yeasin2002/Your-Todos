@@ -1,9 +1,20 @@
 import React from 'react';
-import DeskTopNav from './Todos/Layout/DeskTopNav';
+import { Route, Routes, Outlet } from 'react-router-dom';
 
+//  Routes
+import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
+
+//  shared Layout
+import DeskTopNav from './Todos/Layout/DeskTopNav';
 import MobileNav from './Todos/Layout/MobileNav';
 import MobileTopArea from './Todos/Layout/MobileTopArea';
-import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
+
+//  pages components
+import Notification from './Todos/pages/notification/Notification';
+import Profile from './Todos/pages/profile/Profile';
+import Search from './Todos/pages/search/Search';
+import TodoIndex from './Todos/pages/todo home/TodoIndex';
+
 const Home = () => {
   return (
     <div className="flex flex-col justify-between w-screen h-screen">
@@ -11,7 +22,15 @@ const Home = () => {
 
       <div className=" flex justify-between w-full h-full">
         <DeskTopNav />
-        <TodoHomeRoute />
+        {/* <TodoHomeRoute /> */}
+        {/* <Routes>
+          <Route index element={TodoIndex} />
+          <Route path="notification" element={Notification} />
+          <Route path="search" element={Search} />
+          <Route path="profile" element={Profile} />
+        </Routes> */}
+        Route
+        <Outlet />
       </div>
 
       <div>
