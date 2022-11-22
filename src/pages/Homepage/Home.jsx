@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect, useState, useContext } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import React, { Suspense, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // hooks
@@ -17,16 +17,12 @@ import TodoHome from './Todos/Pages/TodoHome/TodoHome';
 import Profile from './Todos/Pages/Profile page/Profile';
 import Notifications from './Todos/Pages/Notifications/Notifications';
 import Search from './Todos/Pages/Search page/Search';
+
 import LogInFailed from './Todos/Layout/LogInFailed';
 
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(true);
-  const navigate = useNavigate();
   const UserData = useUserData();
-
-  useEffect(() => {
-    navigate('todoHome');
-  }, []);
 
   return (
     <UserContext.Provider value={UserData}>
@@ -42,7 +38,7 @@ const Home = () => {
 
           <Suspense fallback={<Loading />}>
             <Routes>
-              <Route path="todoHome/*" index element={<TodoHome />} />
+              <Route index element={<TodoHome />} />
               <Route path="search" element={<Search />} />
               <Route path="profile" element={<Profile />} />
               <Route path="notification" element={<Notifications />} />
