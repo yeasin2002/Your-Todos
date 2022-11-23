@@ -38,7 +38,7 @@ const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
           exit={{
             x: '-100',
           }}
-          className=" border  min-w-[20vw]  h-full  hidden md:block  "
+          className=" border  min-w-[20vw]   hidden md:block  fixed left-0 top-0 bg-white h-full"
         >
           <div className=" flex flex-col items-center justify-center">
             <img
@@ -134,7 +134,7 @@ const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
           </div>
         </motion.nav>
       ) : (
-        <div className="bg-slate-800 bottom-2 absolute left-0 mr-4 cursor-pointer">
+        <div className="bg-slate-800 bottom-2 left-1 fixed mr-4 rounded-md cursor-pointer">
           <img
             src={Leave}
             alt="leave sidebar "

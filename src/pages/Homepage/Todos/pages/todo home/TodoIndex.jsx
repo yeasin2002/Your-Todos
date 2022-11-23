@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
+import Loading from '../../../../../layouts/Loading';
 //  sub routes
-import AllTodo from './Todo Status/AllTodo';
-import Complete from './Todo Status/Complete';
-import Incomplete from './Todo Status/Incomplete';
+const AllTodo = lazy(() => import('./Todo Status/AllTodo'));
+const Complete = lazy(() => import('./Todo Status/Complete'));
+const Incomplete = lazy(() => import('./Todo Status/Incomplete'));
 
 const TodoIndex = () => {
   return (
@@ -15,11 +16,13 @@ const TodoIndex = () => {
         <Link to="incomplete">incomplete </Link>
       </div>
 
-      <Routes>
-        <Route index element={<AllTodo />} />
-        <Route path="complete" element={<Complete />} />
-        <Route path="incomplete" element={<Incomplete />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route index element={<AllTodo />} />
+          <Route path="complete" element={<Complete />} />
+          <Route path="incomplete" element={<Incomplete />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

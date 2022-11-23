@@ -3,9 +3,16 @@ import React from 'react';
 // assets
 import timeIcon from '../../../../assests/icons/timeAndDate.svg';
 import contributorImg from '../../../../assests/img/contributorProfilePic.jpg';
-const PerTodo = () => {
+const PerTodo = ({ todoBG }) => {
+  const todoBG_color = {
+    blue: 'bg-blue-400',
+    red: 'bg-red-400',
+    green: 'bg-green-400',
+  };
+  let TodoBgColor = todoBG_color[todoBG];
+
   return (
-    <div className="bg-sky-250  px-4 py-2">
+    <div className={TodoBgColor + ' px-4 py-2'}>
       <div className=" flex justify-between">
         <h3>title</h3>
         <input type="checkbox" name="completeOrNot" id="completeOrNot" />
