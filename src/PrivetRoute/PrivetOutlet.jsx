@@ -1,10 +1,8 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
-const PrivetOutlet = () => {
-  let theAuth = true;
-
-  if (theAuth) {
+const PrivetOutlet = ({ userAuth }) => {
+  if (userAuth) {
     return <Outlet />;
   } else {
     return <Navigate to="login" />;

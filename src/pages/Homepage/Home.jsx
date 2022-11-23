@@ -1,63 +1,40 @@
-import React, { Suspense, useEffect, useState, useContext } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { Route, Routes, Outlet } from 'react-router-dom';
 
-// hooks
-import { UserContext } from '../../context/UserContext';
-import useUserData from '../../hooks/useUserData';
+//  Routes
+import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
 
-//  components
+//  shared Layout
+import DeskTopNav from './Todos/Layout/DeskTopNav';
+import MobileNav from './Todos/Layout/MobileNav';
+import MobileTopArea from './Todos/Layout/MobileTopArea';
 
-import HomeDesktopNav from './Home Nav/HomeDesktopNav';
-import HomeMobileNav from './Home Nav/HomeMobileNav';
-import Leave from '../../components/Leave';
-import Loading from '../../layouts/Loading';
-
-import TodoHome from './Todos/Pages/TodoHome/TodoHome';
-import Profile from './Todos/Pages/Profile page/Profile';
-import Notifications from './Todos/Pages/Notifications/Notifications';
-import Search from './Todos/Pages/Search page/Search';
-import LogInFailed from './Todos/Layout/LogInFailed';
+//  pages components
+import Notification from './Todos/pages/notification/Notification';
+import Profile from './Todos/pages/profile/Profile';
+import Search from './Todos/pages/search/Search';
+import TodoIndex from './Todos/pages/todo home/TodoIndex';
+import DesktopSidebar from './Todos/Layout/DesktopSidebar';
 
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(true);
-  const navigate = useNavigate();
-  const UserData = useUserData();
-
-  useEffect(() => {
-    navigate('todoHome');
-  }, []);
-
   return (
-    <UserContext.Provider value={UserData}>
-      <div className="flex flex-col justify-between w-screen h-screen transition-all">
-        <div className=" flex w-full h-full transition-all">
-          <AnimatePresence>
-            {IsSidebarShow ? (
-              <HomeDesktopNav setIsSidebarShow={setIsSidebarShow} />
-            ) : (
-              <Leave setIsSidebarShow={setIsSidebarShow} />
-            )}
-          </AnimatePresence>
+    <div className=" justify-between w-screen h-screen">
+      <MobileTopArea />
 
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="todoHome/*" index element={<TodoHome />} />
-              <Route path="search" element={<Search />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="notification" element={<Notifications />} />
-            </Routes>
-          </Suspense>
-        </div>
-
-        {/* nav bar from mobile  */}
-        <div>
-          <HomeMobileNav />
-        </div>
+      <div className=" flex justify-between w-full h-full">
+        <DesktopSidebar
+          setIsSidebarShow={setIsSidebarShow}
+          IsSidebarShow={IsSidebarShow}
+        />
+        {/* <DeskTopNav /> */}
+        <TodoHomeRoute />
       </div>
 
-      {/* {IsLoginFailed && <LogInFailed />} */}
-    </UserContext.Provider>
+      <div>
+        <MobileNav />
+      </div>
+    </div>
   );
 };
 
