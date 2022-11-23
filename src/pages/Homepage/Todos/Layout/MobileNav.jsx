@@ -10,8 +10,8 @@ import ProfileIcon from '../../../../assests/icons/user.svg';
 
 const MobileNav = () => {
   return (
-    <nav className="bg-sky-250 md:hidden flex justify-around py-1">
-      <Link to="todoHome" className="flex flex-col items-center gap-2">
+    <nav className="bg-sky-250 md:hidden fixed bottom-0 left-0 flex justify-around w-full py-1">
+      <Link to="/" className="flex flex-col items-center gap-2">
         <img src={homeIcon} alt="home" className="w-6 h-6" />
         <span>Home</span>
       </Link>

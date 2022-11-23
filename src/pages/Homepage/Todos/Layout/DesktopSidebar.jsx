@@ -67,7 +67,7 @@ const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
 
           {/* menu  */}
           <div className="mx-4 my-6">
-            <Link to="todoHome" className="desktopMenuDiv">
+            <Link to="/" className="desktopMenuDiv">
               <span>
                 <img className="desktopMenuIcon" src={HomeImg} alt="Home " />
               </span>
