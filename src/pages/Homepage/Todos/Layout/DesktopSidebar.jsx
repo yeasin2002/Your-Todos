@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { UserContext } from '../../../../context/UserContext';
 
 //  assets / Icons
 import PlusIcon from '../../../../assests/icons/plus-icon.svg';
@@ -15,7 +16,6 @@ import gitHubIcon from '../../../../assests/icons/github.svg';
 import About from '../../../../assests/icons/about-us.svg';
 import Help from '../../../../assests/icons/help-&-support.svg';
 import Leave from '../../../../assests/icons/Leave.svg';
-import { UserContext } from '../../../../context/UserContext';
 
 let profile = `https://th.bing.com/th/id/OIP.U0jepfI2xnjVrBZIfQ-DaQHaFe?pid=ImgDet&rs=1`;
 
@@ -25,6 +25,28 @@ const goLogOut = () => {
 };
 
 const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
+  const [userAccountData, setUserAccountData] = useState({
+    email: 'example@gmail.com',
+    name: 'name',
+    id: '',
+  });
+  const usesData = useContext(UserContext);
+
+  useEffect(() => {
+    if (usesData?.UserData.status) {
+      setUserAccountData({
+        ...userAccountData,
+        email: usesData?.UserData?.data?.user.email,
+        name: usesData?.UserData?.data?.user.name,
+        id: usesData?.UserData?.data?.user._id,
+      });
+    }
+  }, []);
+
+  const copyHandler = e => {
+    // userAccountData.id
+    console.log('copy ');
+  };
   return (
     <>
       {IsSidebarShow ? (
@@ -47,9 +69,14 @@ const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
               alt=" avatar"
             />
             <h4 className="text-primary text-base">Good Afternoon ,</h4>
-            <h2 className="text-primary text-2xl font-bold"> username </h2>
+            <h2 className="text-primary 2xl:text-5xl lg:text-xl xl:text-2xl font-bold">
+              {userAccountData.name}
+            </h2>
 
-            <div className=" gap-x-2 flex items-center px-2 py-1 bg-white rounded-lg">
+            <div
+              onClick={copyHandler}
+              className=" gap-x-2 flex items-center px-2 py-1 bg-white rounded-lg"
+            >
               copy handler
               {/* _id */}
               <span>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import useUserData from '../../hooks/useUserData';
+import { UserContext } from '../../context/UserContext';
 
 //  Routes
 import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
@@ -12,24 +14,28 @@ import DesktopSidebar from './Todos/Layout/DesktopSidebar';
 
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(true);
+  const userData = useUserData();
+
   return (
-    <div className=" justify-between w-screen h-screen transition-all">
-      <MobileTopArea />
+    <UserContext.Provider value={userData}>
+      <div className=" justify-between w-screen h-screen transition-all">
+        <MobileTopArea />
 
-      <div className=" flex w-full">
-        <DesktopSidebar
-          setIsSidebarShow={setIsSidebarShow}
-          IsSidebarShow={IsSidebarShow}
-        />
+        <div className=" flex w-full">
+          <DesktopSidebar
+            setIsSidebarShow={setIsSidebarShow}
+            IsSidebarShow={IsSidebarShow}
+          />
 
-        {/* <DeskTopNav /> */}
-        <TodoHomeRoute />
+          {/* <DeskTopNav /> */}
+          <TodoHomeRoute />
+        </div>
+
+        <div>
+          <MobileNav />
+        </div>
       </div>
-
-      <div>
-        <MobileNav />
-      </div>
-    </div>
+    </UserContext.Provider>
   );
 };
 

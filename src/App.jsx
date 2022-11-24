@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 
@@ -25,6 +25,7 @@ import Profile from './pages/Homepage/Todos/pages/profile/Profile';
 
 const App = () => {
   const [userAuth, setUserAuth] = useState(true);
+
   return (
     <>
       <AuthContextProvider>

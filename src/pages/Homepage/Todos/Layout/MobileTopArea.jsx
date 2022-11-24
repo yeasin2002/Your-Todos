@@ -4,12 +4,7 @@ import { UserContext } from '../../../../context/UserContext';
 import avatar from '../../../../assests/img/contributorProfilePic.jpg';
 
 const MobileTopArea = () => {
-  const UserAllData = useContext(UserContext);
-
-  // useEffect(() => {
-  //   // const data = UserAllData?.UserData?.data?.user;
-  //   console.log(UserAllData.UserData);
-  // }, []);
+  const usesData = useContext(UserContext);
 
   return (
     <div className="md:hidden bg-sky-250 flex justify-between px-2 py-4">
@@ -26,7 +21,9 @@ const MobileTopArea = () => {
           <h6 className="text-md font-semibold text-gray-700">
             Good Afternoon
           </h6>
-          <h3 className="text-primary text-xl font-bold"> username</h3>
+          <h3 className="text-primary text-xl font-bold">
+            {usesData?.UserData?.data?.user.name}
+          </h3>
         </div>
       </div>
 
