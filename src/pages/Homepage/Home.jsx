@@ -11,9 +11,11 @@ import MobileTopArea from './Todos/Layout/MobileTopArea';
 
 //  pages components
 import DesktopSidebar from './Todos/Layout/DesktopSidebar';
+import AddingNewTask from './Todos/Layout/AddingNewTask';
 
 const Home = () => {
-  const [IsSidebarShow, setIsSidebarShow] = useState(true);
+  const [IsSidebarShow, setIsSidebarShow] = useState(false);
+  const [NewTaskPopUpExist, setNewTaskPopUpExist] = useState(false);
   const userData = useUserData();
 
   return (
@@ -32,9 +34,12 @@ const Home = () => {
         </div>
 
         <div>
-          <MobileNav />
+          <MobileNav setNewTaskPopUpExist={setNewTaskPopUpExist} />
         </div>
       </div>
+      {NewTaskPopUpExist && (
+        <AddingNewTask setNewTaskPopUpExist={setNewTaskPopUpExist} />
+      )}
     </UserContext.Provider>
   );
 };

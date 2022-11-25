@@ -8,7 +8,10 @@ import searchIcon from '../../../../assests/icons/search.svg';
 import plusIcon from '../../../../assests/icons/plus-icon.svg';
 import ProfileIcon from '../../../../assests/icons/user.svg';
 
-const MobileNav = () => {
+const MobileNav = ({ setNewTaskPopUpExist }) => {
+  const setPopUp = () => {
+    setNewTaskPopUpExist(true);
+  };
   return (
     <nav className="bg-sky-250 md:hidden fixed bottom-0 left-0 flex justify-around w-full py-1">
       <Link to="/" className="flex flex-col items-center gap-2">
@@ -22,7 +25,7 @@ const MobileNav = () => {
       </Link>
 
       {/* add todo - plus icon */}
-      <div className="bottom-2 relative">
+      <div className="bottom-2 relative cursor-pointer" onClick={setPopUp}>
         <span className=" bg-primary inline-block p-4 rounded-full">
           <img src={plusIcon} alt="add todo " className="w-6 h-6" />
         </span>
