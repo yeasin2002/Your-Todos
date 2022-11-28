@@ -7,7 +7,6 @@ import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
 
 //  shared Layout
 import MobileNav from './Todos/Layout/MobileNav';
-import MobileTopArea from './Todos/Layout/MobileTopArea';
 
 //  pages components
 import DesktopSidebar from './Todos/Layout/DesktopSidebar';
@@ -21,12 +20,11 @@ const Home = () => {
   return (
     <UserContext.Provider value={userData}>
       <div className=" justify-between w-screen h-screen transition-all">
-        <MobileTopArea />
-
         <div className=" flex w-full">
           <DesktopSidebar
             setIsSidebarShow={setIsSidebarShow}
             IsSidebarShow={IsSidebarShow}
+            setNewTaskPopUpExist={setNewTaskPopUpExist}
           />
 
           {/* <DeskTopNav /> */}

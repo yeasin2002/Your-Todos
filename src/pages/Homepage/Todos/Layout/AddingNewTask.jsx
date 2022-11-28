@@ -76,7 +76,9 @@ const AddingNewTask = ({ setNewTaskPopUpExist }) => {
           {/*  input and user */}
         </div>
 
-        <button className="bg-primary w-full py-2 my-4">Create Task</button>
+        <button className="bg-primary w-full py-2 my-4 font-bold text-white rounded-lg">
+          Create Task
+        </button>
       </form>
     </div>
   );

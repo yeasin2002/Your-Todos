@@ -24,7 +24,11 @@ const goLogOut = () => {
   console.log('log out ');
 };
 
-const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
+const DesktopSidebar = ({
+  setIsSidebarShow,
+  IsSidebarShow,
+  setNewTaskPopUpExist,
+}) => {
   const [userAccountData, setUserAccountData] = useState({
     email: 'example@gmail.com',
     name: 'name',
@@ -85,7 +89,10 @@ const DesktopSidebar = ({ setIsSidebarShow, IsSidebarShow }) => {
             </div>
           </div>
 
-          <button className="bg-primary gap-x-2 flex items-center justify-center w-11/12 py-2 mx-auto font-semibold text-white rounded-lg">
+          <button
+            onClick={() => setNewTaskPopUpExist(true)}
+            className="bg-primary gap-x-2 flex items-center justify-center w-11/12 py-2 mx-auto font-semibold text-white rounded-lg"
+          >
             Add Task
             <span>
               <img src={PlusIcon} alt="Add Task " />
