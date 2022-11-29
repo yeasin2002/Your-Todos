@@ -1,10 +1,25 @@
 import React from 'react';
-import contributorProfilePic from '../../../../../assests/img/contributorProfilePic.jpg';
+
+// components
+import ProfileMenuItems from '../../compontns/ProfileMenuItems';
+
+// assets
+import contributorProfilePic from '../../../../../assests/img/contributorProfilePic.jpg'; // temporary
+
 import LinkIcon from '../../../../../assests/icons/link-copy.svg';
+
+import account from '../../../../../assests/icons/account.svg';
+import Preferences from '../../../../../assests/icons/Preferences.svg';
+
+import aboutUs from '../../../../../assests/icons/about-us.svg';
+import helpAndSupport from '../../../../../assests/icons/help-&-support.svg';
+
+import LogOut from '../../../../../assests/icons/logout.svg';
+import DeleteAccount from '../../../../../assests/icons/delete-account.svg';
 
 const MobileProfileView = () => {
   return (
-    <div className="md:hidden">
+    <div className="md:hidden ">
       <div className=" bg-sky-250 flex flex-col items-center justify-center py-2">
         <img
           className="border-primary w-16 h-16 border-4 rounded-full"
@@ -22,6 +37,55 @@ const MobileProfileView = () => {
           <span>
             <img src={LinkIcon} alt="copy userName" />
           </span>
+        </div>
+      </div>
+
+      <div className="mx-6 my-10 mb-20">
+        {/* Account */}
+        <div className="my-2">
+          <p className="my-2 text-xl font-bold">General</p>
+          <div className="bg-Shades-100 rounded-md">
+            <ProfileMenuItems
+              theIcon={account}
+              title={'Account Settings'}
+              bottomBorder={true}
+            />
+            <ProfileMenuItems theIcon={Preferences} title={'Preferences'} />
+          </div>
+        </div>
+
+        {/* Information */}
+        <div className="my-2">
+          <p className="my-2 text-xl font-bold">Information</p>
+          <div className="bg-Shades-100 rounded-md">
+            <ProfileMenuItems
+              theIcon={aboutUs}
+              title={'About Us '}
+              bottomBorder={true}
+            />
+            <ProfileMenuItems
+              theIcon={helpAndSupport}
+              title={'Help And Support'}
+            />
+          </div>
+        </div>
+
+        {/*Danger Zone  */}
+        <div className="my-2">
+          <p className="my-2 text-xl font-bold">Information</p>
+          <div className="bg-Shades-100 rounded-md">
+            <ProfileMenuItems
+              theIcon={LogOut}
+              title={'Log Out '}
+              bottomBorder={true}
+              isArrowExist={false}
+            />
+            <ProfileMenuItems
+              theIcon={DeleteAccount}
+              title={'Delete Account'}
+              isArrowExist={false}
+            />
+          </div>
         </div>
       </div>
     </div>
