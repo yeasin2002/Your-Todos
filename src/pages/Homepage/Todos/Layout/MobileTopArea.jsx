@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../../context/UserContext';
-import useGetGreeting from '../../../../hooks/useGetGreeting';
+import useGetTime from '../../../../hooks/usegetTime';
 
 import avatar from '../../../../assests/img/contributorProfilePic.jpg';
 
 const MobileTopArea = () => {
   const usesData = useContext(UserContext);
-  const GetGreeting = useGetGreeting();
+  const GetTime = useGetTime();
 
   return (
     <div className="md:hidden bg-sky-250 flex justify-between px-2 py-4">
@@ -20,7 +20,7 @@ const MobileTopArea = () => {
         </div>
 
         <div>
-          <h6 className="text-md font-semibold text-gray-700">{GetGreeting}</h6>
+          <h6 className="text-md font-semibold text-gray-700">{GetTime}</h6>
           <h3 className="text-primary text-xl font-bold">
             {usesData?.UserData?.data?.user.name}
           </h3>

@@ -25,6 +25,12 @@
     @apply text-slate-700 hover:text-slate-900 font-bold transition-all;
   }
   .contributorProfilePic {
-    @apply dark:border-gray-800  w-10 h-10 border-2 border-white rounded-full;
+    @apply dark:border-gray-800 w-10 h-10 border-2 border-white rounded-full;
+  }
+  .taskTitle {
+    @apply md:text-xl text-slate-700 my-2 text-lg font-bold capitalize;
+  }
+  .toTheCenter {
+    @apply flex items-center justify-between;
   }
 }

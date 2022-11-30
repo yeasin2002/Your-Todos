@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useUserData from '../../hooks/useUserData';
 import { UserContext } from '../../context/UserContext';
+import { AnimatePresence } from 'framer-motion';
 
 //  Routes
 import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
@@ -35,9 +36,12 @@ const Home = () => {
           <MobileNav setNewTaskPopUpExist={setNewTaskPopUpExist} />
         </div>
       </div>
-      {NewTaskPopUpExist && (
-        <AddingNewTask setNewTaskPopUpExist={setNewTaskPopUpExist} />
-      )}
+
+      <AnimatePresence>
+        {NewTaskPopUpExist && (
+          <AddingNewTask setNewTaskPopUpExist={setNewTaskPopUpExist} />
+        )}
+      </AnimatePresence>
     </UserContext.Provider>
   );
 };

@@ -24,9 +24,8 @@ import Search from './pages/Homepage/Todos/pages/search/Search';
 import Profile from './pages/Homepage/Todos/pages/profile/Profile';
 
 const App = () => {
-  const [userAuth, setUserAuth] = useState(true);
+  const [userAuth, setUserAuth] = useState(true );
   let userToken = localStorage.getItem('userToken');
-
   useEffect(() => {
     setUserAuth(userToken);
   }, [userToken]);

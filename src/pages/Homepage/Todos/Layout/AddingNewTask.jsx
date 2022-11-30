@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import InputField from '../../../../components/InputField';
+import { motion } from 'framer-motion';
+
 import CrossIcon from '../../.././../assests/icons/cross.svg';
+import TikIcon from '../../.././../assests/icons/check.svg';
+
+import CategoryItems from '../compontns/CategoryItems';
+import PerParticipants from '../compontns/PerParticipants';
 
 const AddingNewTask = ({ setNewTaskPopUpExist }) => {
   const [TitleValue, setTitleValue] = useState('');
@@ -8,8 +13,21 @@ const AddingNewTask = ({ setNewTaskPopUpExist }) => {
   const removePokUp = () => {
     setNewTaskPopUpExist(false);
   };
+
+  let selectTag = `bg-[#D9E1F2]  outline-1 outline-primary text-primary rounded-md  placeholder:px-4 placeholder:text-[#3960AC]/40`;
   return (
-    <div className="top-5 left-10 fixed  w-[80vw] bg-white min-h-[70vh]">
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      className=" max-h-[90%] overflow-y-scroll  top-0 left-10 fixed  w-[80vw] bg-white min-h-[70vh] border border-slate-800/30 rounded-md"
+    >
       <div className="bg-sky-250 flex justify-between px-4 py-2">
         <p>Create Task </p>
         <span className=" cursor-pointer" onClick={removePokUp}>
@@ -17,70 +35,112 @@ const AddingNewTask = ({ setNewTaskPopUpExist }) => {
         </span>
       </div>
 
-      <form className="md:px-10 px-6 py-2">
-        <InputField
-          inputType={'text'}
-          inputValue={TitleValue}
-          inputValueHandler={setTitleValue}
-          labelFor={' Task Title '}
-          title={'Task Title '}
-          IsRequired={true}
+      <form className="px-4 py-4">
+        <label htmlFor="title">
+          <p className=" taskTitle">Task Title</p>
+        </label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="title"
+          className={`w-full bg-[#D9E1F2] py-2 outline-1 outline-primary text-primary rounded-md my-2 placeholder:px-4 placeholder:text-[#3960AC]/40 `}
         />
 
-        {/* dates  */}
-        <div className=" flex justify-between">
-          <div>
-            <h3>Start </h3>
-            <input
-              className="border-slate-500 border"
-              type="date"
-              name="startDate"
-              id="startDate"
-            />
+        {/* date */}
+        <div className=" md:flex-row md:justify-between md:my-2 flex flex-col justify-start my-4">
+          <div id="start date">
+            <label htmlFor="StartDate">
+              <p className=" taskTitle">Start Date</p>
+              <input type="date" name="StartDate" id="StartDate" />
+            </label>
           </div>
 
-          <div>
-            <h3>End </h3>
-            <input
-              className="border-slate-500 border"
-              type="date"
-              name="endDate"
-              id="endDate"
-            />
+          <div id="end date">
+            <label htmlFor="EndDate">
+              <p className=" taskTitle">End Date</p>
+              <input type="date" name="EndDate" id="EndDate" />
+            </label>
           </div>
         </div>
+        {/*  date end  */}
 
-        <h3>Descriptions</h3>
-        <textarea
-          className="border-slate-600 border"
-          name="DescriptionsAre"
-          id="DescriptionsAre"
-          cols="30"
-          rows="5"
-          placeholder="Descriptions Here "
-        ></textarea>
+        <div>
+          <label htmlFor="descriptions">
+            <p className=" taskTitle">descriptions</p>
+            <textarea
+              name="descriptions"
+              id="descriptions"
+              cols="30"
+              rows="5"
+              placeholder="descriptions here..."
+              className="w-full bg-[#D9E1F2]  outline-1 outline-primary text-primary rounded-md  placeholder:px-4 placeholder:text-[#3960AC]/40"
+            ></textarea>
+          </label>
+        </div>
+        {/* Category */}
+        <div className="toTheCenter">
+          <p className=" taskTitle">Category</p>
 
-        <div className=" gap-x-4 flex">
-          <p>Category</p>
-
-          <select name="choice">
-            <option value="first">First Value</option>
-            <option value="second">Second Value</option>
-            <option value="third">Third Value</option>
-          </select>
+          {/* select tag  */}
+          <label htmlFor="Category">
+            <div className={selectTag}>
+              <select
+                name="Category"
+                id="Category"
+                className={selectTag + 'p-2'}
+              >
+                <CategoryItems title="work" />
+                <CategoryItems title="personal" />
+                <CategoryItems title="Urgent" />
+              </select>
+            </div>
+          </label>
         </div>
 
         {/* Participants */}
-        <div>
-          <p>Participants</p>
-          {/*  input and user */}
+        <div className="group">
+          <div className="toTheCenter ">
+            <p className="taskTitle">Participants</p>
+            <span>
+              <img
+                src={CrossIcon}
+                alt="+"
+                className=" group-hover:rotate-0 w-4 transition-all rotate-45"
+              />
+            </span>
+          </div>
+
+          <div>
+            <div className=" bg-sky-250 w-full px-2 py-4 my-2">
+              <label htmlFor="addParticipants" className="toTheCenter">
+                <input
+                  type="text"
+                  name="addParticipants"
+                  id="addParticipants"
+                  placeholder="add Participants "
+                  className="bg-sky-250 md:w-4/5 w-[30%] border-none outline-none"
+                />
+                <span className="toTheCenter gap-x-2 ">
+                  <select name="role" className=" bg-gray-100">
+                    <option value="admin">admin </option>
+                    <option value="moderator">moderator</option>
+                    <option value="assigner">assigner</option>
+                  </select>
+                  <img src={TikIcon} alt="done" className=" w-5" />
+                </span>
+              </label>
+            </div>
+            <PerParticipants />
+          </div>
         </div>
 
-        <button className="bg-primary w-full py-2 my-4 font-bold text-white rounded-lg">
+        {/* btn */}
+        <button className="bg-primary text-md w-full px-1 py-2 font-bold text-white rounded-lg">
           Create Task
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

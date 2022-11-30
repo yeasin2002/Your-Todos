@@ -16,6 +16,7 @@ import gitHubIcon from '../../../../assests/icons/github.svg';
 import About from '../../../../assests/icons/about-us.svg';
 import Help from '../../../../assests/icons/help-&-support.svg';
 import Leave from '../../../../assests/icons/Leave.svg';
+import useGetTime from '../../../../hooks/usegetTime';
 
 let profile = `https://th.bing.com/th/id/OIP.U0jepfI2xnjVrBZIfQ-DaQHaFe?pid=ImgDet&rs=1`;
 
@@ -35,6 +36,7 @@ const DesktopSidebar = ({
     id: '',
   });
   const usesData = useContext(UserContext);
+  const GetTime = useGetTime();
 
   useEffect(() => {
     if (usesData?.UserData.status) {
@@ -72,7 +74,7 @@ const DesktopSidebar = ({
               src={profile}
               alt=" avatar"
             />
-            <h4 className="text-primary text-base">Good Afternoon ,</h4>
+            <h4 className="text-primary text-base">{GetTime} ,</h4>
             <h2 className="text-primary 2xl:text-5xl lg:text-xl xl:text-2xl font-bold">
               {userAccountData.name}
             </h2>
