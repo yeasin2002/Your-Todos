@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import useTask from '../../../../../hooks/useTask';
 
@@ -10,8 +10,23 @@ const Complete = lazy(() => import('./Todo Status/Complete'));
 const Incomplete = lazy(() => import('./Todo Status/Incomplete'));
 
 const TodoIndex = () => {
+  const [completeTask, setCompleteTask] = useState([]);
+  const [IncompleteTasks, setIncompleteTasks] = useState([]);
   let { taskData, TaskStatus } = useTask();
-  console.log(taskData);
+
+  useEffect(() => {
+    // complete
+    let completeFilter = taskData?.filter(allTask => {
+      return allTask?.completed;
+    });
+    setCompleteTask(completeFilter);
+
+    // incomplete
+    let InCompleteFilter = taskData?.filter(allTask => {
+      return !allTask?.completed;
+    });
+    setIncompleteTasks(InCompleteFilter);
+  }, [taskData]);
 
   return (
     <>
@@ -29,8 +44,14 @@ const TodoIndex = () => {
               index
               element={<AllTodo taskData={taskData} TaskStatus={TaskStatus} />}
             />
-            <Route path="complete" element={<Complete />} />
-            <Route path="incomplete" element={<Incomplete />} />
+            <Route
+              path="complete"
+              element={<Complete completeTask={completeTask} />}
+            />
+            <Route
+              path="incomplete"
+              element={<Incomplete IncompleteTasks={IncompleteTasks} />}
+            />
           </Routes>
         </Suspense>
       </div>

@@ -7,3 +7,16 @@ get user
 
 https://www.npmjs.com/package/use-css-query
 useCssQuery('(max-width: 600px)')
+
+
+  /*
+  completed:false
+createdAt:"2022-12-02T08:04:02.912Z"
+description:"Test description"
+endingDate:"2022-12-03T00:00:00.000Z"
+owner:{_id: '6386fa68377e3c17904c7703', name: 'Md Kawsar Yeasin', username: 'yeasin2002'}
+participants:[]
+startingDate: "2022-12-02T00:00:00.000Z"
+title: "TEST "
+_id: "6389b172258078c675489a88"
+  */
