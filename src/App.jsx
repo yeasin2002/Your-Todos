@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AuthContextProvider } from './context/AuthContext';
+import AuthContext from './context/AuthContext';
 
 // outlets
 import PrivetOutlet from './PrivetRoute/PrivetOutlet';
@@ -24,7 +24,7 @@ import Search from './pages/Homepage/Todos/pages/search/Search';
 import Profile from './pages/Homepage/Todos/pages/profile/Profile';
 
 const App = () => {
-  const [userAuth, setUserAuth] = useState(true );
+  const [userAuth, setUserAuth] = useState(true);
   let userToken = localStorage.getItem('userToken');
   useEffect(() => {
     setUserAuth(userToken);
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <>
-      <AuthContextProvider>
+      <AuthContext.Provider value={userAuth}>
         <Suspense fallback={<Loading />}>
           <Routes>
             {/* public outlet  */}
@@ -51,7 +51,7 @@ const App = () => {
             </Route>
           </Routes>
         </Suspense>
-      </AuthContextProvider>
+      </AuthContext.Provider>
     </>
   );
 };

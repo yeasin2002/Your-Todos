@@ -11,6 +11,7 @@ const Incomplete = lazy(() => import('./Todo Status/Incomplete'));
 
 const TodoIndex = () => {
   let { taskData, TaskStatus } = useTask();
+  console.log(taskData);
 
   return (
     <>
