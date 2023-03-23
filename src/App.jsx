@@ -13,6 +13,8 @@ const AboutUs = lazy(() => import('./pages/aboutPage/About'));
 const Loading = lazy(() => import('./layouts/Loading'));
 const Login = lazy(() => import('./pages/Log in/Login'));
 const SignIn = lazy(() => import('./pages/Singin/SignIn'));
+const ErrorPage = lazy(() => import('./layouts/ErrorPage/ErrorPage'));
+
 const HelpAndSupport = lazy(() =>
   import('./pages/helpAndSupportPage/HelpAndSupport')
 );
@@ -25,7 +27,9 @@ import Profile from './pages/Homepage/Todos/pages/profile/Profile';
 
 const App = () => {
   const [userAuth, setUserAuth] = useState(true);
-  let userToken = localStorage.getItem('userToken');
+  // let userToken = localStorage.getItem('userToken');
+  let userToken = ' ';
+
   useEffect(() => {
     setUserAuth(userToken);
   }, [userToken]);
@@ -48,6 +52,7 @@ const App = () => {
               <Route path="helpAndSupport" element={<HelpAndSupport />} />
 
               <Route path="home/*" element={<Home />} />
+              <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
         </Suspense>

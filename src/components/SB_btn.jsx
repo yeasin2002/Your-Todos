@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SB_btn = ({ backgroundColor, title, whereTo }) => {
+const SB_btn = ({
+  backgroundColor = 'bg-red-800',
+  title = '',
+  whereTo = '/',
+}) => {
   return (
     <Link to={whereTo}>
       <div

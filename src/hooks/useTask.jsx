@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const useTask = () => {
   const [taskData, setTaskData] = useState([]);
@@ -16,8 +16,13 @@ const useTask = () => {
     fetch('https://baby-todo.onrender.com/tasks', options)
       .then(response => response.json())
       .then(response => {
-        setTaskStatus(response.status);
-        setTaskData(response.data.tasks);
+        if (response.status === 'fail') {
+          setTaskStatus('fail');
+          setTaskData([]);
+        } else {
+          setTaskStatus(response.status);
+          setTaskData(response.data?.tasks);
+        }
       })
       .catch(err => console.error(err));
   }, []);

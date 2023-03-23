@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useUserData from '../../hooks/useUserData';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { AnimatePresence } from 'framer-motion';
 
@@ -9,6 +9,9 @@ import TodoHomeRoute from './Todos/Layout/TodoHomeRoute';
 //  shared Layout
 import MobileNav from './Todos/Layout/MobileNav';
 
+// hooks
+import useUserData from '../../hooks/useUserData';
+
 //  pages components
 import DesktopSidebar from './Todos/Layout/DesktopSidebar';
 import AddingNewTask from './Todos/Layout/AddingNewTask';
@@ -16,7 +19,13 @@ import AddingNewTask from './Todos/Layout/AddingNewTask';
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(false);
   const [NewTaskPopUpExist, setNewTaskPopUpExist] = useState(false);
+
   const userData = useUserData();
+  const navigate = useNavigate();
+
+  // if (userData.UserData.status === 'fail') {
+  //   return navigate('/login');
+  // }
 
   return (
     <UserContext.Provider value={userData}>

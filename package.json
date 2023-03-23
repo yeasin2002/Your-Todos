@@ -10,10 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "framer-motion": "^7.6.4",
-    "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "uuid": "^9.0.0"
@@ -24,12 +21,6 @@
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.31.10",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.18",
     "prettier-plugin-tailwind-css": "^1.5.0",
     "react-router-dom": "^6.4.3",
