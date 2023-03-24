@@ -3,7 +3,7 @@ import SB_btn from '../../components/SB_btn.jsx';
 
 const ErrorPage = () => {
   return (
-    <div className=" md:flex-row flex flex-col">
+    <div className=" md:flex-row container flex flex-col items-center justify-center w-screen h-screen mx-auto">
       <div>
         <p className="text-blue-600">404 Error</p>
         <h2 className="text-secondary text-3xl font-extrabold">

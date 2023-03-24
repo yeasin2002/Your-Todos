@@ -21,32 +21,54 @@ const LogInForm = ({ setToForgotPass }) => {
     setToForgotPass(true);
   };
 
-  const LogInFetch = () => {
+  //  form request handler while log in button is clicked
+  const FormRequestAndGetJWT = async () => {
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          login: UserNameOrMail,
+          password: UserPassword,
+        }),
+      };
+
+      const request = await fetch(BaseUrl + EndPoints.login, options);
+      const ResponseData = await request.json();
+
+      if (ResponseData.status == 'fail') {
+        setIsError(true);
+        setErrorLog(ResponseData?.message);
+        setIsLoading('Log In ');
+      } else {
+        setIsLoading('Logged in');
+        localStorage.setItem('userToken', ResponseData?.data?.token);
+        return ResponseData?.data?.token;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //  after getting the JWT  , Sending all data to  the context api
+  const getUserDataAndSetToContext = async ({ token }) => {
     const options = {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        login: UserNameOrMail,
-        password: UserPassword,
-      }),
     };
 
-    fetch(BaseUrl + EndPoints.login, options)
-      .then(response => response.json())
-      .then(ResponseData => {
-        if (ResponseData.status == 'fail') {
-          setIsError(true);
-          setErrorLog(ResponseData.message);
-          setIsLoading('Log In ');
-        } else {
-          setIsLoading('Logged in');
-          localStorage.setItem('userToken', ResponseData.data.token);
-          return navigate('/home');
-        }
-      })
-      .catch(err => console.error(err));
+    const request = await fetch(`${BaseUrl}/user?settings=`, options);
+    const response = await request.json();
+    console.log(response);
+  };
+
+  const LogInFetch = async () => {
+    const data = await FormRequestAndGetJWT();
+    getUserDataAndSetToContext(data);
   };
 
   const LogInHandler = () => {

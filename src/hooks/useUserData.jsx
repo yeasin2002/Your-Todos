@@ -5,20 +5,31 @@ const useUserData = () => {
   const [IsError, setIsError] = useState(false);
   let localToken = localStorage.getItem('userToken');
 
-  useEffect(() => {
+  const dataFetching = async () => {
     const options = {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localToken}`,
       },
     };
-    fetch('https://baby-todo.onrender.com/user?settings=', options)
-      .then(response => response.json())
-      .then(response => setUserData(response))
-      .catch(err => {
-        setIsError(true);
-        console.error(err);
-      });
+
+    const request = await fetch(
+      'https://baby-todo.onrender.com/user?settings=',
+      options
+    );
+    const response = await request.json();
+    setUserData(response);
+
+    // .then(response => response.json())
+    // .then(response => setUserData(response))
+    // .catch(err => {
+    //   setIsError(true);
+    //   console.error(err);
+    // });
+  };
+
+  useEffect(() => {
+    dataFetching();
   }, []);
 
   return { UserData, IsError };

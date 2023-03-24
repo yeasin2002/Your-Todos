@@ -27,8 +27,7 @@ import Profile from './pages/Homepage/Todos/pages/profile/Profile';
 
 const App = () => {
   const [userAuth, setUserAuth] = useState(true);
-  // let userToken = localStorage.getItem('userToken');
-  let userToken = ' ';
+  let userToken = localStorage.getItem('userToken');
 
   useEffect(() => {
     setUserAuth(userToken);
@@ -62,11 +61,3 @@ const App = () => {
 };
 
 export default App;
-/**
-  <Routes>
-                  <Route index element={TodoIndex} />
-                  <Route path="notification" element={Notification} />
-                  <Route path="search" element={Search} />
-                  <Route path="profile" element={Profile} />
-                </Routes>
- */
