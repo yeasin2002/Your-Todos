@@ -53,17 +53,29 @@ const LogInForm = ({ setToForgotPass }) => {
   };
 
   //  after getting the JWT  , Sending all data to  the context api
-  const getUserDataAndSetToContext = async ({ token }) => {
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+  const getUserDataAndSetToContext = async token => {
+    try {
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-    const request = await fetch(`${BaseUrl}/user?settings=`, options);
-    const response = await request.json();
-    console.log(response);
+      const request = await fetch(`${BaseUrl}/user?settings=`, options);
+      const response = await request.json();
+
+      if (response.status == 'success') {
+        navigate('/home', {
+          state: {
+            userVerified: '',
+            data: response.data,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const LogInFetch = async () => {

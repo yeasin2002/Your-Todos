@@ -39,7 +39,7 @@ const DesktopSidebar = ({
   const GetTime = useGetTime();
 
   useEffect(() => {
-    if (usesData?.UserData.status) {
+    if (usesData?.UserData?.status) {
       setUserAccountData({
         ...userAccountData,
         email: usesData?.UserData?.data?.user.email,

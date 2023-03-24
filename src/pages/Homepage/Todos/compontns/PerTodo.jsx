@@ -39,9 +39,9 @@ const PerTodo = ({ todoBG, todoData }) => {
         <div className=" flex justify-between">
           <div className=" flex items-center">
             <img src={timeIcon} alt="time" className="w-6 h-6 mx-2" />
-            <span>
+            {/* <span>
               {startingDate.slice(0, 10)} - {endingDate.slice(0, 10)}
-            </span>
+            </span> */}
           </div>
           <div className="flex mb-5 -space-x-4">
             {participants.map(() => {
