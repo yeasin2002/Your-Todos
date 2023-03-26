@@ -1,7 +1,14 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
+import { useState, useEffect } from 'react';
 
-const PrivetOutlet = ({ userAuth }) => {
+const PrivetOutlet = () => {
+  const [userAuth, setUserAuth] = useState(true);
+  let userToken = localStorage.getItem('userToken');
+
+  useEffect(() => {
+    setUserAuth(userToken);
+  }, [userToken]);
+
   if (userAuth) {
     return <Outlet />;
   } else {
