@@ -67,10 +67,7 @@ const LogInForm = ({ setToForgotPass }) => {
 
       if (response.status == 'success') {
         navigate('/home', {
-          state: {
-            userVerified: '',
-            data: response.data,
-          },
+          state: response.data,
         });
       }
     } catch (error) {

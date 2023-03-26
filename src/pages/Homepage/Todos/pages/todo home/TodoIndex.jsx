@@ -33,7 +33,7 @@ const TodoIndex = () => {
       <div className=" w-full">
         <MobileTopArea />
         <div className=" bg-slate-400 flex justify-around py-2">
-          <Link to="/">All</Link>
+          <Link to="">All</Link>
           <Link to="complete">complete </Link>
           <Link to="incomplete">incomplete </Link>
         </div>

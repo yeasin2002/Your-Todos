@@ -19,10 +19,14 @@ const Home = () => {
 
   const location = useLocation();
   const data = location;
-  console.log(data);
+
+  if (data.state) {
+    localStorage.setItem('userData', JSON.stringify(data?.state));
+  }
+  let userData = localStorage.getItem('userData') || {};
 
   return (
-    <UserContext.Provider value={''}>
+    <UserContext.Provider value={JSON.parse(userData)}>
       <div className=" justify-between w-screen h-screen transition-all">
         <div className=" flex w-full">
           <DesktopSidebar
