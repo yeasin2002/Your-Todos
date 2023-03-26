@@ -1,12 +1,13 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
 
-const PublicOutlet = ({ userAuth }) => {
-  if (!userAuth) {
+const PublicOutlet = () => {
+  let userToken = localStorage.getItem('userToken');
+
+  if (userToken === null) {
     return <Outlet />;
-  } else {
-    return <Navigate to="home" />;
   }
+
+  return <Navigate to="home" />;
 };
 
 export default PublicOutlet;
