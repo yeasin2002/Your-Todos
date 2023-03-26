@@ -1,12 +1,13 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
 
-const PrivetOutlet = ({ userAuth }) => {
-  if (userAuth) {
-    return <Outlet />;
-  } else {
+const PrivetOutlet = () => {
+  let userToken = localStorage.getItem('userToken');
+
+  if (userToken === null) {
     return <Navigate to="login" />;
   }
+
+  return <Outlet />;
 };
 
 export default PrivetOutlet;
