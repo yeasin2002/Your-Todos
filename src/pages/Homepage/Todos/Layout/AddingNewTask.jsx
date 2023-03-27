@@ -17,7 +17,6 @@ const AddingNewTask = ({ setNewTaskPopUpExist }) => {
   const [ParticipantsState, setParticipantsState] = useState('');
 
   const newTaskModifier = useTaskModifier();
-  console.log(typeof newTaskModifier);
 
   const removePokUp = () => {
     setNewTaskPopUpExist(false);

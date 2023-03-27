@@ -24,6 +24,9 @@ const UpdateUsername = '/account/change-username';
 // Update Password
 const UpdatePassword = '/account/change-password';
 
+// Delete Task
+export const DeleteTask = taskId => `/tasks/${taskId}`;
+
 //  exports
 export const EndPoints = {
   getOTP,
@@ -34,4 +37,5 @@ export const EndPoints = {
   UpdateEmail,
   UpdateUsername,
   UpdatePassword,
+  DeleteTask,
 };

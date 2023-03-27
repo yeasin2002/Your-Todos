@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { UserContext } from '../../../../context/UserContext';
 
 // pages component
 import TodoIndex from '../pages/todo home/TodoIndex';
 import Notification from '../pages/notification/Notification';
 import Search from '../pages/search/Search';
 import Profile from '../pages/profile/Profile';
-import { UserContext } from '../../../../context/UserContext';
 
 const TodoHomeRoute = () => {
-  const first = useContext(UserContext);
-  console.log(first);
+  // const first = useContext(UserContext);
+
   return (
     <Routes>
       <Route index element={<TodoIndex />} />
