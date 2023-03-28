@@ -4,6 +4,7 @@ import useTask from '../../../../../hooks/useTask';
 
 import Loading from '../../../../../layouts/Loading';
 import MobileTopArea from '../../Layout/MobileTopArea';
+
 //  sub routes
 const AllTodo = lazy(() => import('./Todo Status/AllTodo'));
 const Complete = lazy(() => import('./Todo Status/Complete'));
@@ -12,8 +13,8 @@ const Incomplete = lazy(() => import('./Todo Status/Incomplete'));
 const TodoIndex = () => {
   const [completeTask, setCompleteTask] = useState([]);
   const [IncompleteTasks, setIncompleteTasks] = useState([]);
-  let { taskData, TaskStatus } = useTask();
-
+  let fetchData = useTask();
+  let { taskData, TaskStatus } = fetchData;
   useEffect(() => {
     // complete
     let completeFilter = taskData?.filter(allTask => {

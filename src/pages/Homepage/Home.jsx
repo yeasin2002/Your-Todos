@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+import { User } from '../..//User';
 import { AnimatePresence } from 'framer-motion';
 
 //  Routes
@@ -26,7 +26,7 @@ const Home = () => {
   let userData = localStorage.getItem('userData') || {};
 
   return (
-    <UserContext.Provider value={JSON.parse(userData)}>
+    <User.Provider value={JSON.parse(userData)}>
       <div className=" justify-between w-screen h-screen transition-all">
         <div className=" flex w-full">
           <DesktopSidebar
@@ -49,7 +49,7 @@ const Home = () => {
           <AddingNewTask setNewTaskPopUpExist={setNewTaskPopUpExist} />
         )}
       </AnimatePresence>
-    </UserContext.Provider>
+    </User.Provider>
   );
 };
 

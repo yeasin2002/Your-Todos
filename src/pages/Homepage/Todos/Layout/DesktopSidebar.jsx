@@ -76,7 +76,7 @@ const DesktopSidebar = ({
             />
             <h4 className="text-primary text-base">{GetTime} ,</h4>
             <h2 className="text-primary 2xl:text-5xl lg:text-xl xl:text-2xl font-bold">
-              {userAccountData.name}
+              {usesData?.user?.name}
             </h2>
 
             <div

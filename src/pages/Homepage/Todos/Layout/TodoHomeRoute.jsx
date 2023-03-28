@@ -9,8 +9,6 @@ import Search from '../pages/search/Search';
 import Profile from '../pages/profile/Profile';
 
 const TodoHomeRoute = () => {
-  // const first = useContext(UserContext);
-
   return (
     <Routes>
       <Route index element={<TodoIndex />} />

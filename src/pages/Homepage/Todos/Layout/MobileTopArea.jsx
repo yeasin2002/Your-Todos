@@ -6,6 +6,7 @@ import avatar from '../../../../assests/img/contributorProfilePic.jpg';
 
 const MobileTopArea = () => {
   const usesData = useContext(UserContext);
+
   const GetTime = useGetTime();
 
   return (
@@ -22,7 +23,7 @@ const MobileTopArea = () => {
         <div>
           <h6 className="text-md font-semibold text-gray-700">{GetTime}</h6>
           <h3 className="text-primary text-xl font-bold">
-            {usesData?.UserData?.data?.user.name}
+            {usesData?.user?.name}
           </h3>
         </div>
       </div>
