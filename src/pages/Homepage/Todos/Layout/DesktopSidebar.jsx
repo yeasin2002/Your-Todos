@@ -66,7 +66,7 @@ const DesktopSidebar = ({
           exit={{
             x: '-100',
           }}
-          className=" border  min-w-[20vw]   hidden md:block  fixed left-0 top-0 bg-white h-full"
+          className="  z-50 border  min-w-[20vw]   hidden md:block  fixed left-0 top-0 bg-white h-full"
         >
           <div className=" flex flex-col items-center justify-center">
             <img
@@ -103,7 +103,7 @@ const DesktopSidebar = ({
 
           {/* menu  */}
           <div className="mx-4 my-6">
-            <Link to="/" className="desktopMenuDiv">
+            <Link to="" className="desktopMenuDiv">
               <span>
                 <img className="desktopMenuIcon" src={HomeImg} alt="Home " />
               </span>

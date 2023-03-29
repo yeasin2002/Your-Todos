@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // components
 import ProfileMenuItems from '../../compontns/ProfileMenuItems';
@@ -16,8 +16,11 @@ import helpAndSupport from '../../../../../assests/icons/help-&-support.svg';
 
 import LogOut from '../../../../../assests/icons/logout.svg';
 import DeleteAccount from '../../../../../assests/icons/delete-account.svg';
+import { UserContext } from '../../../../../context/UserContext';
 
 const MobileProfileView = () => {
+  let userData = useContext(UserContext);
+  console.log(userData?.user);
   return (
     <div className="md:hidden ">
       <div className=" bg-sky-250 flex flex-col items-center justify-center py-2">
@@ -28,7 +31,7 @@ const MobileProfileView = () => {
         />
         <h4 className="text-primary text-base">Good Afternoon ,</h4>
         <h2 className="text-primary 2xl:text-5xl lg:text-xl xl:text-2xl font-bold">
-          {'userAccountData.name'}
+          {userData?.user?.name}
         </h2>
 
         <div className=" gap-x-2 flex items-center px-2 py-1 bg-white rounded-lg">

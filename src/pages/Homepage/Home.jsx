@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { User } from '../..//User';
+import { useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //  Routes
@@ -12,6 +11,7 @@ import MobileNav from './Todos/Layout/MobileNav';
 //  pages components
 import DesktopSidebar from './Todos/Layout/DesktopSidebar';
 import AddingNewTask from './Todos/Layout/AddingNewTask';
+import { UserContext } from '../../context/UserContext';
 
 const Home = () => {
   const [IsSidebarShow, setIsSidebarShow] = useState(false);
@@ -26,7 +26,7 @@ const Home = () => {
   let userData = localStorage.getItem('userData') || {};
 
   return (
-    <User.Provider value={JSON.parse(userData)}>
+    <UserContext.Provider value={JSON.parse(userData)}>
       <div className=" justify-between w-screen h-screen transition-all">
         <div className=" flex w-full">
           <DesktopSidebar
@@ -49,7 +49,7 @@ const Home = () => {
           <AddingNewTask setNewTaskPopUpExist={setNewTaskPopUpExist} />
         )}
       </AnimatePresence>
-    </User.Provider>
+    </UserContext.Provider>
   );
 };
 

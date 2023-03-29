@@ -13,8 +13,8 @@ const TodoHomeRoute = () => {
     <Routes>
       <Route index element={<TodoIndex />} />
       <Route path="notification" element={<Notification />} />
-      <Route path="search" element={<Search />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="search/" element={<Search />} />
+      <Route path="profile/*" element={<Profile />} />
       <Route path="/*" element={<TodoIndex />} />
     </Routes>
   );
