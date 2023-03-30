@@ -16,7 +16,7 @@ const Profile = () => {
       <DeskTopProfileNav />
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route index path="Preferences" element={<Preferences />} />
+          <Route index  element={<Preferences />} />
           <Route path="AccountSettings" element={<AccountSettings />} />
         </Routes>
       </Suspense>

@@ -11,7 +11,7 @@ const DeskTopProfileNav = () => {
         <p>Account Settings</p>
       </Link>
 
-      <Link to={'Preferences'} className="gap-x-2 flex">
+      <Link to={''} className="gap-x-2 flex">
         <img src={PreferencesIcon} alt="Preferences" className="w-5" />
         <p>Preferences</p>
       </Link>

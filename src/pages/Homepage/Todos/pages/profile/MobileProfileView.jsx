@@ -20,13 +20,14 @@ import { UserContext } from '../../../../../context/UserContext';
 
 const MobileProfileView = () => {
   let userData = useContext(UserContext);
-  console.log(userData?.user);
+
   return (
     <div className="md:hidden ">
       <div className=" bg-sky-250 flex flex-col items-center justify-center py-2">
         <img
           className="border-primary w-16 h-16 border-4 rounded-full"
-          src={contributorProfilePic}
+          // src={contributorProfilePic}
+          src={userData?.user?.avatar}
           alt=" avatar"
         />
         <h4 className="text-primary text-base">Good Afternoon ,</h4>

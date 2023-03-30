@@ -15,8 +15,6 @@ const TodoIndex = () => {
   const [IncompleteTasks, setIncompleteTasks] = useState([]);
   let fetchData = useTask();
 
-  console.log(fetchData);
-
   let { taskData, TaskStatus } = fetchData;
   useEffect(() => {
     // complete
