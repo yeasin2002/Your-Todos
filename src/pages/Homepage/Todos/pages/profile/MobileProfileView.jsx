@@ -17,6 +17,7 @@ import helpAndSupport from '../../../../../assests/icons/help-&-support.svg';
 import LogOut from '../../../../../assests/icons/logout.svg';
 import DeleteAccount from '../../../../../assests/icons/delete-account.svg';
 import { UserContext } from '../../../../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const MobileProfileView = () => {
   let userData = useContext(UserContext);
@@ -49,12 +50,33 @@ const MobileProfileView = () => {
         <div className="my-2">
           <p className="my-2 text-xl font-bold">General</p>
           <div className="bg-Shades-100 rounded-md">
-            <ProfileMenuItems
-              theIcon={account}
-              title={'Account Settings'}
-              bottomBorder={true}
-            />
-            <ProfileMenuItems theIcon={Preferences} title={'Preferences'} />
+            <Link
+              to={'preferences'}
+              className={
+                '   flex items-center justify-between p-4 cursor-pointer border-b border-slate-700/40'
+              }
+            >
+              <div className=" gap-x-2 flex items-center">
+                <span>
+                  <img src={account} className=" w-6 h-6" />
+                </span>
+                <p>{'Account Settings'}</p>
+              </div>
+            </Link>
+
+            <Link
+              to={'accountsettings'}
+              className={
+                '   flex items-center justify-between p-4 cursor-pointer'
+              }
+            >
+              <div className=" gap-x-2 flex items-center">
+                <span>
+                  <img src={Preferences} className=" w-6 h-6" />
+                </span>
+                <p>{'Preferences'}</p>
+              </div>
+            </Link>
           </div>
         </div>
 

@@ -7,6 +7,8 @@ import TodoIndex from '../pages/todo home/TodoIndex';
 import Notification from '../pages/notification/Notification';
 import Search from '../pages/search/Search';
 import Profile from '../pages/profile/Profile';
+import Preferences from '../pages/profile/Preferences';
+import AccountSettings from '../pages/profile/AccountSettings';
 
 const TodoHomeRoute = () => {
   return (
@@ -14,8 +16,12 @@ const TodoHomeRoute = () => {
       <Route index element={<TodoIndex />} />
       <Route path="notification" element={<Notification />} />
       <Route path="search/" element={<Search />} />
-      <Route path="profile/*" element={<Profile />} />
       <Route path="/*" element={<TodoIndex />} />
+
+      <Route path="profile" element={<Profile />}>
+        <Route path="preferences" element={<Preferences />} />
+        <Route path="accountsettings" element={<AccountSettings />} />
+      </Route>
     </Routes>
   );
 };
