@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { UserContext } from '../../../../context/UserContext';
 
@@ -11,6 +11,7 @@ import Preferences from '../pages/profile/Preferences';
 import AccountSettings from '../pages/profile/AccountSettings';
 
 const TodoHomeRoute = () => {
+  const [IsMobileSeen, setIsMobileSeen] = useState(false);
   return (
     <Routes>
       <Route index element={<TodoIndex />} />
@@ -18,9 +19,23 @@ const TodoHomeRoute = () => {
       <Route path="search/" element={<Search />} />
       <Route path="/*" element={<TodoIndex />} />
 
-      <Route path="profile" element={<Profile />}>
-        <Route path="preferences" element={<Preferences />} />
-        <Route path="accountsettings" element={<AccountSettings />} />
+      <Route
+        path="profile"
+        element={
+          <Profile
+            IsMobileSeen={IsMobileSeen}
+            setIsMobileSeen={setIsMobileSeen}
+          />
+        }
+      >
+        <Route
+          path="preferences"
+          element={<Preferences setIsMobileSeen={setIsMobileSeen} />}
+        />
+        <Route
+          path="accountsettings"
+          element={<AccountSettings setIsMobileSeen={setIsMobileSeen} />}
+        />
       </Route>
     </Routes>
   );

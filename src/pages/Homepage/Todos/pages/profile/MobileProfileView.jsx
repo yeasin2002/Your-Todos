@@ -19,8 +19,12 @@ import DeleteAccount from '../../../../../assests/icons/delete-account.svg';
 import { UserContext } from '../../../../../context/UserContext';
 import { Link } from 'react-router-dom';
 
-const MobileProfileView = () => {
+const MobileProfileView = ({ IsMobileSeen, setIsMobileSeen }) => {
   let userData = useContext(UserContext);
+
+  const SetTrue = () => {
+    setIsMobileSeen(true);
+  };
 
   return (
     <div className="md:hidden ">
@@ -46,12 +50,13 @@ const MobileProfileView = () => {
       </div>
 
       <div className="mx-6 my-10 mb-20">
-        {/* Account */}
+        {/* Account and preferences */}
         <div className="my-2">
           <p className="my-2 text-xl font-bold">General</p>
           <div className="bg-Shades-100 rounded-md">
             <Link
-              to={'preferences'}
+              onClick={SetTrue}
+              to={'accountsettings'}
               className={
                 '   flex items-center justify-between p-4 cursor-pointer border-b border-slate-700/40'
               }
@@ -65,7 +70,8 @@ const MobileProfileView = () => {
             </Link>
 
             <Link
-              to={'accountsettings'}
+              onClick={SetTrue}
+              to={'preferences'}
               className={
                 '   flex items-center justify-between p-4 cursor-pointer'
               }
