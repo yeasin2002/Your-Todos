@@ -35,6 +35,7 @@ const MobileProfileView = ({ IsMobileSeen, setIsMobileSeen }) => {
           src={userData?.user?.avatar}
           alt=" avatar"
         />
+
         <h4 className="text-primary text-base">Good Afternoon ,</h4>
         <h2 className="text-primary 2xl:text-5xl lg:text-xl xl:text-2xl font-bold">
           {userData?.user?.name}

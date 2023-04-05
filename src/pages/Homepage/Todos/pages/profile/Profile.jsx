@@ -34,7 +34,7 @@ const Profile = ({ IsMobileSeen, setIsMobileSeen }) => {
 
       {/* for mobile  */}
       {IsMobile && IsMobileSeen && (
-        <div className={' bg-slate-300 absolute top-0  w-full h-full'}>
+        <div className={' bg-slate-100  absolute top-0  w-full h-full'}>
           <AnimatePresence>
             <OutletNav setIsMobileSeen={setIsMobileSeen} />
           </AnimatePresence>
