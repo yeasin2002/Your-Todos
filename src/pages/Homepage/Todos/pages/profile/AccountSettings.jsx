@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 
 import { UserContext } from '../../../../../context/UserContext';
@@ -12,16 +12,20 @@ import DeleteAccount from './Account Settings/DeleteAccount';
 
 const AccountSettings = () => {
   let userData = useContext(UserContext);
+  const [IsNextStep, setIsNextStep] = useState(false);
   let { _id, username, name, avatar } = userData.user;
 
   return (
-    <div className=" w-full h-full">
-      <UpdateUser userData={{ _id, username, name, avatar }} />
+    <div className=" lg:w-2/4 lg:mx-auto flex flex-col w-full h-full p-2 px-2">
+      <UpdateUser
+        setIsNextStep={setIsNextStep}
+        userData={{ _id, username, name, avatar }}
+      />
       <div>
-        <ChangeEmail />
-        <ChangePassword />
-        <ChangeUserName />
-        <DeleteAccount />
+        <ChangeEmail setIsNextStep={setIsNextStep} IsNextStep={IsNextStep} />
+        <ChangePassword setIsNextStep={setIsNextStep} IsNextStep={IsNextStep} />
+        <ChangeUserName setIsNextStep={setIsNextStep} IsNextStep={IsNextStep} />
+        <DeleteAccount setIsNextStep={setIsNextStep} IsNextStep={IsNextStep} />
       </div>
     </div>
   );

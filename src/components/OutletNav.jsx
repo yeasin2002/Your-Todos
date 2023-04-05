@@ -36,11 +36,11 @@ const OutletNav = ({ setIsMobileSeen }) => {
       animate={{
         opacity: 1,
       }}
-      className="bg-slate-300 flex items-center justify-between w-full px-2"
+      className="bg-slate-300 sticky top-0 flex items-center justify-between w-full px-2"
     >
       <h4> {TabName} </h4>
       <span
-        className=" hover:bg-slate-100 block p-4 transition-all rounded-full"
+        className=" hover:bg-slate-100 block p-4 transition-all rounded-full cursor-pointer"
         onClick={() => {
           navigate('/home/profile');
           setIsMobileSeen(false);

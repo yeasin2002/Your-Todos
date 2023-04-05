@@ -33,4 +33,12 @@
   .toTheCenter {
     @apply flex items-center justify-between;
   }
+
+  .btn__primary {
+    @apply bg-primary lg:font-bold xl:font-extrabold w-full py-2 my-2 font-semibold text-white rounded-md;
+  }
+
+  .input_profile {
+    @apply outline-primary w-full px-2 py-2 bg-blue-100 border-none rounded-lg;
+  }
 }

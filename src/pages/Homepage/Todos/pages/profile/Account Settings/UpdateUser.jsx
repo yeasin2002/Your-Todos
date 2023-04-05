@@ -7,12 +7,14 @@ const UpdateUser = ({
     name: '',
     avatar: '',
   },
+  setIsNextStep,
+  IsNextStep,
 }) => {
   let { _id, username, name, avatar } = userData;
 
   return (
-    <div className="lg:w-2/4 lg:mx-auto flex flex-col w-full p-2 px-2">
-      <img src={avatar} alt="" className="self-center w-24" />
+    <div className=" w-full my-8">
+      <img src={avatar} alt="" className=" w-24 mx-auto" />
 
       <div>
         <p className="lg:font-bold text-xl font-medium">Full Name</p>
