@@ -12,7 +12,7 @@ import DeleteAccount from './Account Settings/DeleteAccount';
 
 const AccountSettings = () => {
   let userData = useContext(UserContext);
-  const [IsNextStep, setIsNextStep] = useState(false);
+  const [IsNextStep, setIsNextStep] = useState(true);
   let { _id, username, name, avatar } = userData.user;
 
   return (

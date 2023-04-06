@@ -16,33 +16,37 @@ const ChangeEmail = ({ setIsNextStep, IsNextStep }) => {
           Change Email
         </button>
       )}
-      {IsNextStep || IsShown || (
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-          }}
-        >
-          <InputProfile
-            labelFor="ChangeEmail-input"
-            inputPlaceholder="exm@gmail.com"
-            inputType="email"
-            labelId="ChangeEmail-input"
+      {IsNextStep ||
+        (IsShown && (
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+            }}
           >
-            Email
-          </InputProfile>
-          <div className=" gap-x-2 flex">
-            <button className="btn__primary ">Save</button>
-            <button
-              className="btn__primary "
-              onClick={() => {
-                setIsNextStep(true);
-              }}
+            <InputProfile
+              labelFor="ChangeEmail-input"
+              inputPlaceholder="exm@gmail.com"
+              inputType="email"
+              labelId="ChangeEmail-input"
             >
-              Cancel
-            </button>
-          </div>
-        </form>
-      )}
+              Email
+            </InputProfile>
+            <div className=" gap-x-2 flex">
+              <button type="submit" className="btn__primary ">
+                Save
+              </button>
+              <button
+                className="btn__primary "
+                onClick={() => {
+                  setIsNextStep(true);
+                  setIsShown(false);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        ))}
     </div>
   );
 };

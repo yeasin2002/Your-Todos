@@ -13,6 +13,7 @@ const InputProfile = ({
         <p className="lg:font-bold font-semibold">{children}</p>
       </label>
       <input
+        required
         type={inputType}
         placeholder={inputPlaceholder}
         className="input_profile"

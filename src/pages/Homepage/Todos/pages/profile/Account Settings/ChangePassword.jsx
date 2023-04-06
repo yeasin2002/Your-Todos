@@ -13,24 +13,59 @@ const ChangePassword = ({ setIsNextStep, IsNextStep }) => {
             setIsNextStep(false);
           }}
         >
-          ChangePassword
+          Change Password
         </button>
       )}
-      {IsNextStep || (
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            setIsNextStep(true);
-          }}
-        >
-          <InputProfile
-            labelFor="ChangeEmail-input"
-            inputPlaceholder="exm@gmail.com"
-            inputType="email"
-            labelId="ChangeEmail-input"
-          ></InputProfile>
-        </form>
-      )}
+      {IsNextStep ||
+        (childVisibility && (
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              setIsNextStep(true);
+              setChildVisibility(false);
+              console.log(e);
+            }}
+          >
+            <InputProfile
+              labelFor="Current-password"
+              inputType="password"
+              labelId="Current-password"
+            >
+              Current password
+            </InputProfile>
+
+            <InputProfile
+              labelFor="New-Password"
+              inputType="password"
+              labelId="New-Password"
+            >
+              New Password
+            </InputProfile>
+            <InputProfile
+              labelFor="Confirm -New-Password"
+              inputType="password"
+              labelId="Confirm -New-Password"
+            >
+              Confirm New Password
+            </InputProfile>
+
+            <div className=" gap-x-2 flex">
+              <button type="submit" className="btn__primary">
+                Save
+              </button>
+              <button
+                onClick={() => {
+                  setIsNextStep(true);
+                  setChildVisibility(false);
+                }}
+                type="reset"
+                className="btn__primary"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        ))}
     </div>
   );
 };
