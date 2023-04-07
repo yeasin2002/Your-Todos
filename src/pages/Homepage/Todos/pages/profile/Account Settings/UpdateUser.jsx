@@ -1,7 +1,14 @@
 import React from 'react';
+// import axios from 'axios';
 
 //  additional
 import { BaseUrl } from './../../../../../../api/api';
+
+export const convertToFormData = object => {
+  const formData = new FormData();
+  for (let key in object) formData.append(key, object[key]);
+  return formData;
+};
 
 const UpdateUser = ({
   userData = {
@@ -22,18 +29,18 @@ const UpdateUser = ({
     try {
       let userStorage = localStorage.getItem('userToken');
       console.log(userStorage);
-      let req = await fetch(`${BaseUrl}/user`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authentication: 'Bearer ' + userStorage,
-        },
-        body: JSON.stringify({
+      let res = await axios.patch(
+        `http://localhost:8000/user`,
+        convertToFormData({
           name: e.target?.elements?.newNameOfUser?.value,
           avatar: e.target?.elements?.selectAvatar?.value,
         }),
-      });
-      let res = await req.json();
+        {
+          headers: {
+            Authentication: 'Bearer ' + userStorage,
+          },
+        }
+      );
       console.log(res);
     } catch (error) {
       console.log(error.message);
