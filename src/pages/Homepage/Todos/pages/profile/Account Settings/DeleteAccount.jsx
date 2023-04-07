@@ -42,10 +42,6 @@ const DeleteAccount = ({ setIsNextStep, IsNextStep }) => {
               </button>
             </div>
           </div>
-          // <ConfirmDelete
-          //   setIsNextStep={setIsNextStep}
-          //   setGoForDeleteProcess={setGoForDeleteProcess}
-          // />
         ))}
     </div>
   );
