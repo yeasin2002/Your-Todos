@@ -1,11 +1,11 @@
 import React from 'react';
 
 const InputProfile = ({
-  labelId = '',
   labelFor = '',
-  children = ' ',
   inputType = 'text',
   inputPlaceholder = '',
+  labelId = '',
+  children,
 }) => {
   return (
     <>
@@ -18,7 +18,7 @@ const InputProfile = ({
         placeholder={inputPlaceholder}
         className="input_profile"
         id={labelId}
-        name={labelId}
+        name={labelFor}
       />
     </>
   );

@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint"
+    "lint": "eslint ."
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "framer-motion": "^7.6.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vite-vscode": "^1.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
