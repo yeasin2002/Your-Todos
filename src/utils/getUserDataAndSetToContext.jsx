@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
 import { BaseUrl } from '../api/api';
 
-//  after getting the JWT  , Sending all data to  the context api
 const getUserDataAndSetToContext = async () => {
-  const [userData, setUserData] = useState({});
   let token = localStorage.getItem('userToken') || '';
 
   try {
@@ -19,13 +16,11 @@ const getUserDataAndSetToContext = async () => {
     const response = await request.json();
 
     if (response.status == 'success') {
-      await setUserData(response.data);
+      return response.data;
     }
   } catch (error) {
     console.log(error.message);
   }
-
-  return userData;
 };
 
 export default getUserDataAndSetToContext;
