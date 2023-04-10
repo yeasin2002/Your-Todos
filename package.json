@@ -10,6 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "daisyui": "^2.51.5",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.3",
     "formik": "^2.2.9",
     "framer-motion": "^7.6.4",
     "react": "^18.2.0",
